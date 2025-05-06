@@ -352,10 +352,88 @@ input:checked + .slider:before {
   flex-direction: column;
   gap: var(--spacing-lg);
   margin-bottom: var(--spacing-xl);
+  /* Styles for comparison page card primarily */
+}
+
+/* Styles for the Analyzer Page Product Card */
+.analyzer-product-card {
+  background-color: var(--card-background);
+  border: 2px solid var(--error-color); /* Red border */
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+}
+
+.analyzer-product-card .product-image-link {
+  display: block; /* Make link a block to contain image */
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.analyzer-product-card .product-image {
+  max-width: 100%;
+  max-height: 300px; /* Increased max-height */
+  object-fit: contain;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.analyzer-product-card .product-details {
+  text-align: center; /* Center text details */
+  width: 100%;
+}
+
+.analyzer-product-card .product-title {
+  font-size: 1.6rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-color);
+}
+
+.analyzer-product-card .product-price {
+  font-size: 1.4rem;
+  color: #009688; /* Teal color for price */
+  font-weight: bold;
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm);
+  background-color: rgba(0, 150, 136, 0.1);
+  border-radius: var(--border-radius);
+  display: inline-block;
+}
+
+.analyzer-product-card .product-description {
+  color: var(--text-color);
+  margin-top: var(--spacing-md);
+  line-height: 1.7;
+  padding: var(--spacing-md);
+  background-color: rgba(76, 175, 80, 0.05); /* Light green tint */
+  border-radius: var(--border-radius);
+  border-left: 4px solid #4CAF50; /* Green left border */
+  text-align: left; /* Align description text to left */
+  width: 100%;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+[data-theme="dark"] .analyzer-product-card .product-description {
+  background-color: rgba(100, 200, 100, 0.1);
+}
+
+/* Original Product Card Styles (mostly for comparison page) */
+
+.product-image-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .product-image {
   max-width: 100%;
+  max-height: 250px;
   border-radius: var(--border-radius);
   object-fit: contain;
   height: auto;
@@ -364,18 +442,62 @@ input:checked + .slider:before {
 
 .product-details {
   flex: 1;
+  width: 100%;
+}
+
+.product-title {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-color);
 }
 
 .product-price {
   font-size: 1.5rem;
   color: var(--primary-color);
   font-weight: bold;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm);
+  background-color: rgba(0, 200, 0, 0.1);
+  border-radius: var(--border-radius);
+  display: inline-block;
 }
 
 .product-description {
-  color: var(--light-text);
+  color: var(--text-color);
   margin-bottom: var(--spacing-md);
+  line-height: 1.8;
+  padding: var(--spacing-md);
+  background-color: rgba(0, 0, 200, 0.05);
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--primary-color);
+  width: 100%;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] .product-description {
+  background-color: rgba(100, 100, 255, 0.1);
+}
+
+@media screen and (min-width: 768px) {
+  .product-card {
+    flex-direction: row;
+  }
+  
+  .product-image {
+    max-width: 300px;
+    height: 300px;
+    width: auto;
+  }
+  
+  .product-details {
+    min-width: 0; /* Important for flex child to allow text wrapping */
+    padding-left: var(--spacing-md);
+  }
 }
 
 /* === Specifications Table === */
@@ -383,6 +505,10 @@ input:checked + .slider:before {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: var(--spacing-xl);
+  background-color: rgba(128, 128, 128, 0.1); /* Light grey */
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  border: 1px solid rgba(128, 128, 128, 0.3);
 }
 
 .specs-table th,
@@ -400,6 +526,10 @@ input:checked + .slider:before {
 /* === Review Highlights === */
 .review-highlights {
   margin-bottom: var(--spacing-xl);
+  background-color: rgba(255, 255, 0, 0.1); /* Light yellow */
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  border: 1px solid rgba(255, 255, 0, 0.3);
 }
 
 .summary-text {
@@ -413,146 +543,136 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
 }
 
-.pros, .cons {
-  flex: 1;
-}
-
-.pros h3, .cons h3 {
-  margin-bottom: var(--spacing-sm);
+.pros {
+  background-color: rgba(0, 180, 0, 0.1); /* Green background for strengths */
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  border-left: 4px solid #00b000;
 }
 
 .pros h3 {
-  color: var(--success-color);
+  color: #007000;
+  margin-bottom: var(--spacing-md);
+}
+
+.cons {
+  background-color: rgba(180, 0, 180, 0.1); /* Purple background for issues */
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  border-left: 4px solid #b000b0;
 }
 
 .cons h3 {
-  color: var(--error-color);
+  color: #700070;
+  margin-bottom: var(--spacing-md);
 }
 
-.pros ul, .cons ul {
-  list-style-position: inside;
-  padding-left: var(--spacing-md);
+.buyer-personas-section {
+  background-color: rgba(255, 200, 0, 0.1); /* Yellow background for personas */
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  border-left: 4px solid #ffc800;
 }
 
-.pros li, .cons li {
-  margin-bottom: var(--spacing-sm);
+.buyer-personas-section h3 {
+  color: #8a6d00;
+  margin-bottom: var(--spacing-md);
 }
 
-/* New DeepSeek Seller Analysis styles */
-.listing-advice, .seller-fix, .feature-quote, .example-quote {
-  margin-top: var(--spacing-xs);
-  margin-bottom: var(--spacing-sm);
-  padding-left: var(--spacing-lg);
-  font-size: 0.95rem;
+.undocumented-features-section {
+  background-color: rgba(180, 100, 0, 0.1); /* Brown background for features */
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  border-left: 4px solid #b46400;
 }
 
-.example-quote, .feature-quote {
+.undocumented-features-section h3 {
+  color: #8a4f00;
+  margin-bottom: var(--spacing-md);
+}
+
+.standout-quotes-section {
+  background-color: rgba(255, 150, 150, 0.2); /* Pink background for quotes */
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  border-left: 4px solid #ff9696;
+}
+
+.standout-quotes-section h3 {
+  color: #aa5555;
+  margin-bottom: var(--spacing-md);
+}
+
+.listing-advice {
+  font-style: italic;
+  margin: var(--spacing-sm) 0;
+  color: var(--light-text);
+}
+
+.example-quote {
   font-style: italic;
   color: var(--light-text);
+  margin-top: var(--spacing-xs);
 }
 
 .severity {
   display: inline-block;
-  padding: 2px 6px;
-  border-radius: 4px;
+  padding: 0.1rem 0.5rem;
+  border-radius: 1rem;
   font-size: 0.8rem;
-  margin-left: var(--spacing-sm);
-  font-weight: 500;
+  margin-left: 0.5rem;
 }
 
 .severity-low {
-  background-color: rgba(76, 175, 80, 0.2);
-  color: var(--success-color);
+  background-color: rgba(0, 180, 0, 0.2);
+  color: #007000;
 }
 
 .severity-medium {
-  background-color: rgba(255, 152, 0, 0.2);
-  color: var(--warning-color);
+  background-color: rgba(255, 180, 0, 0.2);
+  color: #aa7700;
 }
 
 .severity-high {
-  background-color: rgba(244, 67, 54, 0.2);
-  color: var(--error-color);
+  background-color: rgba(180, 0, 0, 0.2);
+  color: #aa0000;
 }
 
-.buyer-personas-section, .undocumented-features-section, .standout-quotes-section {
-  margin-top: var(--spacing-xl);
-  padding-top: var(--spacing-md);
-  border-top: 1px solid var(--border-color);
+.seller-fix {
+  font-style: italic;
+  margin: var(--spacing-sm) 0;
+  color: var(--light-text);
 }
 
-.buyer-personas-section h3, .undocumented-features-section h3, .standout-quotes-section h3 {
-  color: var(--primary-color);
-  margin-bottom: var(--spacing-md);
-}
-
-.personas-list, .features-list, .quotes-list {
-  list-style-position: inside;
-  padding-left: var(--spacing-md);
-}
-
-.personas-list li, .features-list li, .quotes-list li {
-  margin-bottom: var(--spacing-md);
-}
-
-.personas-list p, .features-list p {
-  margin-top: var(--spacing-xs);
-  padding-left: var(--spacing-lg);
-}
-
-.quotes-list li {
+.feature-quote {
   font-style: italic;
   color: var(--light-text);
+  margin-top: var(--spacing-xs);
 }
 
-/* === Reviews List === */
-.reviews-section {
-  margin-bottom: var(--spacing-xl);
-}
-
-.review {
-  padding: var(--spacing-md);
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: var(--spacing-md);
-}
-
-.review:last-child {
-  border-bottom: none;
-}
-
-.review header {
-  margin-bottom: var(--spacing-sm);
-}
-
-.review-rating {
-  font-weight: 500;
-  margin-bottom: var(--spacing-xs);
-  color: var(--primary-color);
-}
-
-.review h4 {
-  margin-bottom: var(--spacing-xs);
-  font-size: 1.1rem;
-  color: var(--text-color);
-}
-
-.review-meta {
-  font-size: 0.9rem;
-  color: var(--light-text);
-  margin-bottom: var(--spacing-sm);
-}
-
-.read-more {
-  display: inline-block;
-  margin-top: var(--spacing-sm);
-  font-weight: 500;
+@media screen and (min-width: 768px) {
+  .pros-cons {
+    flex-direction: row;
+  }
+  
+  .pros, .cons {
+    flex: 1;
+  }
 }
 
 /* === Similar Products === */
 .similar-products {
   margin-bottom: var(--spacing-xl);
+  background-color: rgba(128, 0, 128, 0.1); /* Light purple */
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  border: 1px solid rgba(128, 0, 128, 0.3);
 }
 
 .similar-products-list {
@@ -1811,4 +1931,27 @@ input:checked + .slider:before {
   .selling-points-container {
     grid-template-columns: 1fr;
   }
+}
+
+/* Add server error message styling */
+.server-error-message {
+  background-color: var(--error-bg);
+  border-left: 4px solid var(--error-color);
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.server-error-message h3 {
+  color: var(--error-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.server-error-message ul, 
+.server-error-message ol {
+  padding-left: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.server-error-message li {
+  margin-bottom: var(--spacing-xs);
 } 

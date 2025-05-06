@@ -1,12 +1,25 @@
 {
-  "url": "https://www.amazon.com/AMD-5700X-16-Thread-Unlocked-Processor/dp/B09VCHQHZ6?pd_rd_i=B09VCHQHZ6&pd_rd_w=YkGvH&content-id=amzn1.sym.2b73cc78-829f-4b69-98f5-6762ddc04f55&pf_rd_p=2b73cc78-829f-4b69-98f5-6762ddc04f55&pf_rd_r=FHA4GNP4Y5Z8WEQ1DMTH&pd_rd_wg=3tyK3&pd_rd_r=952e9837-a1d2-4780-bfd2-f25f53ea3884",
+  "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTo2NDA4NzQ4OTQ4MDA1ODMzOjE3NDY1NTg5MTc6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDI3ODkwNDc0OTQwMjo6Ojo&url=%2Fdp%2FB0CQ4WBV8L%2Fref%3Dsspa_dk_detail_3%3Fpsc%3D1%26pd_rd_i%3DB0CQ4WBV8L%26pd_rd_w%3D0joo3%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3DC86AYCNRBDMHZC1TSQA2%26pd_rd_wg%3Dl78xG%26pd_rd_r%3D61003d2c-a551-435c-b8a6-3b3ea67fc992%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
   "product_details": {
-    "description": "Be unstoppable with the speed of the AMD Ryzen 7 5700X desktop processor. AMD Ryzen 5000 Series processors deliver the ultimate in high performance, whether you’re playing the latest games, designing the next skyscraper or crunching scientific data. With AMD Ryzen, you’re always in the lead.",
+    "description": "About this item【Premium Gaming Mini PC】The Nucbox K6 Gaming PC is a small form factor Desktop Micro Mini Computer with an AMD Ryzen 7 7840HS (8C/16T up to 5.1Ghz) processor. The GPU is integrated with a powerful AMD Radeon 780M 12 Cores Graphics Card; AMD RDNA 3 graphics architecture; performance is almost close to that of a full NVIDIA GTX 1650 Ti. Coupled with the support of FSR 2.0+ technology, he computer can handle heavy computing tasks smoothly and better for multitasking.【32GB DDR5 Dual Channel RAM & 1TB PCIe SSD Dual Slot Expansion】Installed with DDR5 32GB RAM 5600MHz (Dual Channel 2x16GB), the Nucbox K6 mini pc support expansion to 64GB RAM. Featured with 1TB M.2 2280 PCIe 4.0 SSD, supports dual slot expansion to 2*PCIe 4.0 2TB SSD up to 4TB. (Upgrades not included)【New Gen USB 4.0】Advanced USB4 port features 8K@60Hz display experience, supports a maximum transfer speed of 40 Gbps, is compatible with Display Paramount mount a discrete video card via USB4, and USB4 simultaneously powers a 15w portable touch display. All-in-one mini pc is widely used for games, image editing, browsing, watching movies, programming etc.【Mini Gaming PC with 4K Triple Screen Display】Nucbox K6 gaming computer is equipped with USB 4.0 USB-C Video output (Compatible with Thunderbolt accessories). The Type-C Displayport Video output can connect to the latest monitor displays. HDMI video output can connect to large screen TV and Display Monitors. Features simultaneous triple screen display.【Dual 2.5Gbps LAN + WiFi 6E + BT 5.2 】Dual 2.5G LAN port design provides more applications, such as firewall, multichannel aggregation, soft routing, file storage server, etc. WiFi 6E (2.4GHz, 5.0GHz, 6.0GHz Wireless Frequency)provides a faster internet experience for browsing, streaming and gaming. Built-in Bluetooth 5.2 is more stable and efficient to connect multiple wireless devices such as projector, printer, monitor, speakers and etc.【GMKtec Warranty】 GMKtec offers a 1-year limited warranty for each mini PC, starting from the date of the purchase. All defects due to design and workmanship are covered. With a professional after sales team always ready to attend to your needs, you can simply relax and enjoy your mini PC.›See more product details",
     "specifications": {
-      "Processor": "‎4.6 GHz ryzen_7"
+      "Standing screen display size": "‎75 Inches",
+      "Screen Resolution": "‎4096 × 2160",
+      "Max Screen Resolution": "‎3840 x 2160 pixels",
+      "Processor": "‎5.1 GHz amd_ryzen_7",
+      "RAM": "‎32 GB DDR5",
+      "Memory Speed": "‎5.1 GHz",
+      "Hard Drive": "‎1 TB PCIE 4.0 M.2 2280 Dual Slot",
+      "Graphics Coprocessor": "‎AMD Radeon 780M 12 Cores",
+      "Chipset Brand": "‎AMD",
+      "Card Description": "‎Integrated",
+      "Graphics Card Ram Size": "‎32 GB",
+      "Wireless Type": "‎5.8 GHz Radio Frequency, Bluetooth, 5 GHz Radio Frequency, 2.4 GHz Radio Frequency",
+      "Number of USB 2.0 Ports": "‎1",
+      "Number of USB 3.0 Ports": "‎3"
     },
-    "image_url": "https://m.media-amazon.com/images/I/51gRv8z+K6L._AC_SL1500_.jpg",
-    "price": "$139.26"
+    "image_url": "https://m.media-amazon.com/images/I/71tpOc+TCmL._AC_SL1500_.jpg",
+    "price": "$479.99"
   },
   "review_data": {
     "reviews": [],
@@ -21,48 +34,5 @@
     }
   },
   "ai_summary": {},
-  "similar_products": [
-    {
-      "title": "KAMRUI Mini PC Computer, Intel Processor N97 (up to 3.6 GHz), 16GB DDR4 RAM 256GB M.2 SSD, Mini Desktop Computer Support Dual 4K, WiFi, Bluetooth, Ethernet, HTPC for Business, Education, Home",
-      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTozMTM2NTM3NzU5NTAyODAzOjE3NDY1NTMyODI6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDczNjAyMDM5MDAwMjo6Ojo&url=%2Fdp%2FB099KSJN8P%2Fref%3Dsspa_dk_detail_0%3Fpsc%3D1%26pd_rd_i%3DB099KSJN8P%26pd_rd_w%3DsiicV%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3DJBX6P3TR04CK0MXK34S0%26pd_rd_wg%3D9IwP7%26pd_rd_r%3D21e932c0-2e0c-4881-bae2-2b3ca2869f7f%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
-      "image_url": "https://m.media-amazon.com/images/I/41bS9f04EyL._AC_UF480,480_SR480,480_.jpg",
-      "price": "-17%$149.99$149.99List Price$179.99$179.99"
-    },
-    {
-      "title": "AMD Ryzen 5 3600 6-core, 12-Thread Unlocked Desktop Processor with Wraith Spire Cooler",
-      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTozMTM2NTM3NzU5NTAyODAzOjE3NDY1NTMyODI6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDY4MTcxMDU5NzYwMjo6Ojo&url=%2Fdp%2FB0BL92CBWG%2Fref%3Dsspa_dk_detail_1%3Fpsc%3D1%26pd_rd_i%3DB0BL92CBWG%26pd_rd_w%3DsiicV%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3DJBX6P3TR04CK0MXK34S0%26pd_rd_wg%3D9IwP7%26pd_rd_r%3D21e932c0-2e0c-4881-bae2-2b3ca2869f7f%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
-      "image_url": "https://m.media-amazon.com/images/I/41-RueknarL._AC_UF480,480_SR480,480_.jpg",
-      "price": "-7%$83.62$83.62Typical:$89.99$89.99"
-    },
-    {
-      "title": "Alloy 9 Mini Gaming PC AMD Ryzen 9 7940HS 32GB DDR5 1TB SSD 5600 MHz RAM, Desktop M...",
-      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTozMTM2NTM3NzU5NTAyODAzOjE3NDY1NTMyODI6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDQwNjkyNDQ4NzYwMjo6Ojo&url=%2Fdp%2FB0CM6KHGN7%2Fref%3Dsspa_dk_detail_2%3Fpsc%3D1%26pd_rd_i%3DB0CM6KHGN7%26pd_rd_w%3DsiicV%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3DJBX6P3TR04CK0MXK34S0%26pd_rd_wg%3D9IwP7%26pd_rd_r%3D21e932c0-2e0c-4881-bae2-2b3ca2869f7f%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
-      "image_url": "https://m.media-amazon.com/images/I/311j2txqDAL._AC_UF480,480_SR480,480_.jpg",
-      "price": "$709.00$709.00"
-    },
-    {
-      "title": "【DDR4 RAM】 GIGASTONE Game PRO 32GB Kit (2x16GB) DDR4 3200MHz PC4-25600 CL 16-18-18-40 Intel XMP 2.0 AMD Ryzen 1.35V UDIMM 288 Pin Unbuffered Non ECC High Performance Gaming Desktop Memory - White",
-      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTozMTM2NTM3NzU5NTAyODAzOjE3NDY1NTMyODI6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDczOTcwNzM0OTkwMjo6Ojo&url=%2Fdp%2FB0CB2TZKCG%2Fref%3Dsspa_dk_detail_3%3Fpsc%3D1%26pd_rd_i%3DB0CB2TZKCG%26pd_rd_w%3DsiicV%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3DJBX6P3TR04CK0MXK34S0%26pd_rd_wg%3D9IwP7%26pd_rd_r%3D21e932c0-2e0c-4881-bae2-2b3ca2869f7f%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
-      "image_url": "https://m.media-amazon.com/images/I/41lXfcha6DL._AC_UF480,480_SR480,480_.jpg",
-      "price": "$54.99$54.99"
-    },
-    {
-      "title": "Mini PC P3 Lite, AMD Ryzen 7 6800H Mini Gaming PC, 24GB DDR5 RAM, 1TB NVMEe SSD, Tr...",
-      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTozMTM2NTM3NzU5NTAyODAzOjE3NDY1NTMyODI6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDU5OTI1NDY5MTIwMjo6Ojo&url=%2Fdp%2FB0DKTG7LSF%2Fref%3Dsspa_dk_detail_4%3Fpsc%3D1%26pd_rd_i%3DB0DKTG7LSF%26pd_rd_w%3DsiicV%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3DJBX6P3TR04CK0MXK34S0%26pd_rd_wg%3D9IwP7%26pd_rd_r%3D21e932c0-2e0c-4881-bae2-2b3ca2869f7f%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
-      "image_url": "https://m.media-amazon.com/images/I/51IRejMCZxL._AC_UF480,480_SR480,480_.jpg",
-      "price": "$459.00$459.00"
-    },
-    {
-      "title": "Mini PC AMD Ryzen 7 5700u (8C/16T,up to 4.3 GHz), Mini Computers 32GB DDR4 RAM 1TB ...",
-      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTozMTM2NTM3NzU5NTAyODAzOjE3NDY1NTMyODI6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDU0MDAxMDAxNjAwMjo6Ojo&url=%2Fdp%2FB0CT5R9NRL%2Fref%3Dsspa_dk_detail_5%3Fpsc%3D1%26pd_rd_i%3DB0CT5R9NRL%26pd_rd_w%3DsiicV%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3DJBX6P3TR04CK0MXK34S0%26pd_rd_wg%3D9IwP7%26pd_rd_r%3D21e932c0-2e0c-4881-bae2-2b3ca2869f7f%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
-      "image_url": "https://m.media-amazon.com/images/I/31K7ZqBNrqL._AC_UF480,480_SR480,480_.jpg",
-      "price": "$389.99$389.99"
-    },
-    {
-      "title": "GMKtec Gaming Mini PC K8 Plus AMD Ryzen 7 8845HS(8C/16T, up to 5.1GHz) 32GB DDR5 RAM 1TB SSD, Desktop Computer Dual NIC 2.5G, HDMI 2.1, USB4",
-      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTozMTM2NTM3NzU5NTAyODAzOjE3NDY1NTMyODI6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDQ4NDY4NjM3NjgwMjo6Ojo&url=%2Fdp%2FB0DHNTW3H6%2Fref%3Dsspa_dk_detail_6%3Fpsc%3D1%26pd_rd_i%3DB0DHNTW3H6%26pd_rd_w%3DsiicV%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3DJBX6P3TR04CK0MXK34S0%26pd_rd_wg%3D9IwP7%26pd_rd_r%3D21e932c0-2e0c-4881-bae2-2b3ca2869f7f%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
-      "image_url": "https://m.media-amazon.com/images/I/41ek5S94tbL._AC_UF480,480_SR480,480_.jpg",
-      "price": "-27%$549.99$549.99List Price:$749.99$749.99"
-    }
-  ]
+  "similar_products": []
 }

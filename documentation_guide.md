@@ -188,10 +188,30 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 - **`clean_markdown_formatting(response)`** - Cleans markdown formatting from API responses
 - **`save_response(response, output_path)`** - Saves the AI analysis to response.json
 
+#### [`scripts/python/comparison_analyzer.py`](scripts/python/comparison_analyzer.py) - Product comparison analysis
+*Analyzes and compares two Amazon products using DeepSeek AI*
+
+**`ComparisonAnalyzer`** - Processes and compares two products
+- **`__init__(api_key)`** - Initializes with the DeepSeek API key
+- **`load_product_data(product_a_path, product_b_path)`** - Loads data for two products
+- **`generate_comparison_prompt(product_a, product_b)`** - Creates structured comparison prompt
+- **`get_comparison_analysis(prompt)`** - Makes API call to DeepSeek for comparison
+- **`parse_json_response(response)`** - Parses and validates the JSON response
+- **`save_comparison_result(comparison_data, output_path)`** - Saves comparison to JSON file
+
 ### 🔸 Frontend Components
 
-#### [`pages/index.html`](pages/index.html) - Main application interface
-*Provides user interface for analyzing Amazon products*
+#### [`pages/index.html`](pages/index.html) - Main landing page
+*Provides navigation to the analyzer and comparison features*
+
+**Key Sections**
+- **Header** - App name and description
+- **Navigation Cards** - Cards to navigate to Product Analyzer and Product Comparison
+- **Theme Toggle** - Button to switch between light and dark themes
+- **Footer** - Copyright and attribution
+
+#### [`pages/analyzer.html`](pages/analyzer.html) - Single product analysis page
+*Provides user interface for analyzing a single Amazon product*
 
 **Semantic Structure**
 - **`<header>`** - App name and description
@@ -206,9 +226,29 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 - **Review Highlights** - Displays AI-generated summary with pros and cons
 - **Top Reviews** - Shows the top 3 user reviews with metadata
 - **Similar Products** - Displays alternative product options if available
-- **Error Handling** - Dedicated error displays for CORS issues and Amazon scraping failures
 - **DeepSeek Analysis** - Shows AI-generated insights directly after the product card
 - **Ad Containers** - Responsive ad sections (left, right, bottom)
+- **Theme Toggle** - Button to switch between light and dark themes
+
+#### [`pages/comparison.html`](pages/comparison.html) - Product comparison page
+*Provides interface for comparing two Amazon products side-by-side*
+
+**Semantic Structure**
+- **`<header>`** - App name with navigation to home
+- **`<section class="form-container">`** - Form with inputs for two product URLs
+- **`<section id="comparison-results-container">`** - Comparison results with structured layout
+- **`<footer>`** - Copyright and attribution
+
+**Key Sections**
+- **Product Cards** - Two product cards (dark red borders) showing basic product information
+- **Main Content Area** - Comparison analysis (blue border) containing:
+  - **Specification Comparison** (grey background) - Direct comparison of product specs with highlighting for better values
+  - **Product Advantages** (green background) - Features where one product outperforms the other
+  - **Critical Weaknesses** (purple background) - Significant issues in either product
+  - **Shared Strengths** (yellow background) - Common positive aspects between products
+  - **Unique Selling Points** (brown background) - Distinct advantages for each product
+  - **Buyer Recommendation** (pink background) - Guidance on which buyers would prefer each product
+- **Ad Sections** - Google Ads containers (orange borders) placed on left, right, and bottom of page
 - **Theme Toggle** - Button to switch between light and dark themes
 
 #### [`styles/main.css`](styles/main.css) - Styling for the application
@@ -224,9 +264,10 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 - **Grid Layout** - Modern grid-based layout with improved spacing
 - **Smooth Transitions** - Visual transitions for theme changes and content loading
 - **Ad Container Styling** - Responsive ad placement areas
+- **Color-coded Comparison Sections** - Distinct visual styling for different comparison aspects
 
-#### [`scripts/js/app.js`](scripts/js/app.js) - Client-side functionality
-*Handles user interactions and data rendering*
+#### [`scripts/js/app.js`](scripts/js/app.js) - Client-side functionality for analyzer page
+*Handles user interactions and data rendering for the product analyzer*
 
 **`DOMContentLoaded` Event Handler** - Sets up the application when page loads
 
@@ -241,9 +282,27 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 - **`saveThemePreference(theme)`** - Saves theme preference to local storage
 - **`loadThemePreference()`** - Loads and applies saved theme preferences
 - **`runDeepSeekAnalysis()`** - Automatically triggers DeepSeek analysis after product data loads
-- **`formatStarRating(rating)`** - Formats ratings with star emojis
-- **`formatProductTitle(title)`** - Cleans product titles using regex
-- **`formatPrice(price)`** - Properly formats price display
+
+#### [`scripts/js/comparison.js`](scripts/js/comparison.js) - Client-side functionality for comparison page
+*Handles user interactions and data rendering for the product comparison*
+
+**`DOMContentLoaded` Event Handler** - Sets up the comparison application
+
+**Key Functions**
+- **`handleComparisonSubmit(e)`** - Processes form submission and fetches data for two products
+- **`fetchProductData(url, productIndex)`** - Fetches product data for a specific product URL
+- **`renderProductDetails(container, productData, index)`** - Renders basic product information
+- **`generateComparisonAnalysis()`** - Calls the DeepSeek API to compare products
+- **`renderSpecificationComparison()`** - Creates a spec comparison table with highlighting for better values
+- **`renderComparisonResults(comparisonData)`** - Populates all comparison sections with data
+- **`isBetterValue(valueA, valueB, specKey)`** - Determines which spec value is better for comparison
+- **`renderProductAdvantages(advantages)`** - Renders the product advantages section
+- **`renderCriticalWeaknesses(weaknesses)`** - Renders the critical weaknesses section
+- **`renderSharedStrengths(strengths)`** - Renders the shared strengths section
+- **`renderUniqueSellingPoints(sellingPoints)`** - Renders the unique selling points section
+- **`renderBuyerRecommendation(recommendation)`** - Renders the buyer recommendation section
+- **`handleCompareDifferent()`** - Resets the UI to compare different products
+- **`toggleTheme()`** - Switches between light and dark themes
 
 #### [`scripts/server.js`](scripts/server.js) - Server with Python integration
 *Provides backend API and handles Python script execution*
@@ -251,12 +310,13 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 **Key Features**
 - **Static File Serving** - Serves HTML, CSS, JS, and other static assets
 - **API Endpoint** - Provides `/run-analysis` endpoint for running Python scripts
+- **Comparison Endpoint** - Provides `/run-comparison-analysis` endpoint for comparing products
 - **Error Handling** - Detects and reports various error conditions:
   - **Amazon Blocking** - Identifies when Amazon is blocking scraping requests
   - **Invalid JSON** - Detects when invalid or empty data is returned
   - **Script Errors** - Properly captures and reports Python execution errors
 - **CORS Support** - Handles cross-origin resource sharing for client-side requests
-- **DeepSeek API Integration** - Provides endpoint for DeepSeek analysis
+- **DeepSeek API Integration** - Provides endpoints for DeepSeek analysis and comparison
 
 ## 🌐 Local Development
 
@@ -446,3 +506,8 @@ The product comparison feature uses a specialized DeepSeek prompt to compare two
 ### Responsive Design
 - Works on mobile and desktop devices
 - Adjusts layout based on screen size
+
+[File: styles/main.css] - [Manages all global styles, theme configurations, and specific component styles for the application.]
+    [Class: .product-card] - [General styling for product display cards, primarily used on the comparison page. Handles flexbox layout for image and details.]
+    [Class: .analyzer-product-card] - [Specific styling for the product display card on the analyzer page. Features a simpler, centered layout with a prominent red border for distinction. Contains nested styles for its image, details, title, price, and description areas.]
+    [Class: .comparison-product-card] - [Styling for product cards within the comparison page sections, typically smaller and more compact.]

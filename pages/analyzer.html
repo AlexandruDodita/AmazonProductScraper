@@ -82,6 +82,22 @@
             <li>Use the sample data option below to see how the interface works</li>
           </ol>
         </div>
+        
+        <div id="server-error-message" class="server-error-message hidden">
+          <h3>Server Error</h3>
+          <p>Our server encountered an error while processing your request. This might happen because:</p>
+          <ul>
+            <li>The product URL is incorrect or malformed</li>
+            <li>The product page has an unusual format that our parser couldn't handle</li>
+            <li>There might be a temporary issue with our server</li>
+          </ul>
+          <p>Suggestions:</p>
+          <ol>
+            <li>Double-check the product URL to ensure it's correct</li>
+            <li>Verify that the product page loads correctly in your browser</li>
+            <li>Try again later or use the sample data option below</li>
+          </ol>
+        </div>
       </div>
       <div class="button-group">
         <button id="try-fallback" class="button">Use Sample Data</button>
@@ -100,14 +116,14 @@
         <!-- Main Content -->
         <main>
           <!-- Product Card -->
-          <section class="card">
-            <div class="product-card">
+          <section class="analyzer-product-card">
+            <div class="analyzer-product-card">
               <a href="#" id="main-product-image-link" target="_blank" class="product-image-link">
                 <img id="product-image" class="product-image" src="" alt="Product Image">
               </a>
               <div class="product-details">
                 <a href="#" id="main-product-title-link" target="_blank" class="product-title-link">
-                  <h2 id="product-title"></h2>
+                  <h2 id="product-title" class="product-title"></h2>
                 </a>
                 <div id="product-price" class="product-price"></div>
                 <p id="product-description" class="product-description"></p>

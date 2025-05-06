@@ -1,65 +1,7 @@
 {
-  "top_strengths": [
-    {
-      "feature": "High performance boost speeds",
-      "listing_advice": "Highlight the auto-boost capability up to 5.1GHz with minimal BIOS tweaks (PBO and DOCP)",
-      "example_quote": "This chip boosts to 5.1ghz when using 2-3 cores or less easily and even if under full load will still stay around 4.75ghz on all 8 cores at 100% load."
-    },
-    {
-      "feature": "AM4 platform longevity",
-      "listing_advice": "Emphasize easy upgrade path for existing AM4 users (e.g., 'Drop-in replacement for Ryzen 3000/2000 series with BIOS update')",
-      "example_quote": "AMDs support of the AM4 platform for so long has really allowed people to stretch out the lifespan of their older systems."
-    },
-    {
-      "feature": "Cool operation with proper cooling",
-      "listing_advice": "Add a cooling recommendation bullet (e.g., 'Stays below 75\u00b0C under load when paired with quality air coolers like Noctua NH-D15')",
-      "example_quote": "With a Noctua NH-U12S Redux, temperatures remain around 35-40\u00b0C idle and 70-75\u00b0C under stress."
-    }
-  ],
-  "buyer_personas": [
-    {
-      "persona": "Gaming Enthusiast",
-      "description": "Values high FPS gains (especially at 1080P/1440P), DLSS compatibility, and future-proofing for GPU upgrades"
-    },
-    {
-      "persona": "AM4 Upgrader",
-      "description": "Seeks cost-effective performance boost without changing motherboard (coming from Ryzen 2000/3000 series)"
-    },
-    {
-      "persona": "Content Creator",
-      "description": "Needs 8 cores/16 threads for streaming, editing, and multitasking while maintaining gaming performance"
-    }
-  ],
-  "negative_trends": [
-    {
-      "issue": "Potential for defective units causing crashes",
-      "seller_fix": "Add prominent disclaimer about AMD's warranty/return policy and troubleshooting steps for WHEA errors",
-      "severity": "medium"
-    },
-    {
-      "issue": "High temperatures with stock cooling",
-      "seller_fix": "Add bold warning in listing: 'Requires aftermarket cooler - we recommend Thermalright Peerless Assassin or liquid cooling'",
-      "severity": "high"
-    },
-    {
-      "issue": "Inadequate packaging reported",
-      "seller_fix": "Improve shipping materials to prevent damage (mention this improvement in listing)",
-      "severity": "low"
-    }
-  ],
-  "undocumented_features": [
-    {
-      "feature": "Significant FPS gains with DLSS",
-      "quote": "Especially in games using DLSS... my fps increase was huge."
-    },
-    {
-      "feature": "Compatibility with older B450/X470 motherboards",
-      "quote": "The CPU will work just fine on most B450/X470 motherboards as long as your bios is up to date"
-    }
-  ],
-  "standout_quotes": [
-    "The IPC increase on Ryzen 5000 over 3000 series is huge. Over 30% faster",
-    "Gone are the days of manual overclocking to get all the performance you paid for",
-    "Ancora nel 2025, regge perfettamente ogni tipo di carico (Still in 2025, it perfectly handles every type of load)"
-  ]
+  "top_strengths": [],
+  "buyer_personas": [],
+  "negative_trends": [],
+  "undocumented_features": [],
+  "standout_quotes": []
 }

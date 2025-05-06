@@ -352,8 +352,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const specs1 = extractSpecifications(product1Data);
         const specs2 = extractSpecifications(product2Data);
         
-        // Combine specs from both products (union of keys)
-        const allSpecKeys = new Set([...Object.keys(specs1), ...Object.keys(specs2)]);
+        // Find matching keys (specs present in both products)
+        const matchingKeys = Object.keys(specs1).filter(key => key in specs2);
+        
+        // If there are no matching specs, display a message
+        if (matchingKeys.length === 0) {
+            specsComparisonTable.innerHTML = '<p>No matching specifications found to compare.</p>';
+            return;
+        }
         
         // Create the table HTML
         let tableHTML = `
@@ -368,17 +374,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 <tbody>
         `;
         
-        // Add rows for each specification
-        allSpecKeys.forEach(key => {
-            const value1 = specs1[key] || 'N/A';
-            const value2 = specs2[key] || 'N/A';
-            const highlight = value1 !== value2 ? 'highlight-diff' : '';
+        // Add rows for each matching specification
+        matchingKeys.forEach(key => {
+            const value1 = specs1[key];
+            const value2 = specs2[key];
+            
+            // Check if values are different to highlight them
+            const isDifferent = value1 !== value2;
+            const rowClass = isDifferent ? 'highlight-diff' : '';
+            
+            // Try to determine which is better for numeric values
+            const isBetter1 = isBetterValue(value1, value2, key);
+            const isBetter2 = isBetterValue(value2, value1, key);
+            
+            const value1Class = isBetter1 ? 'better-value' : '';
+            const value2Class = isBetter2 ? 'better-value' : '';
             
             tableHTML += `
-                <tr class="${highlight}">
+                <tr class="${rowClass}">
                     <td>${key}</td>
-                    <td>${value1}</td>
-                    <td>${value2}</td>
+                    <td class="${value1Class}">${value1}</td>
+                    <td class="${value2Class}">${value2}</td>
                 </tr>
             `;
         });
@@ -391,6 +407,57 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Add the table to the page
         specsComparisonTable.innerHTML = tableHTML;
+    }
+    
+    /**
+     * Determines if valueA is better than valueB for a given specification
+     * @param {string} valueA - First value to compare
+     * @param {string} valueB - Second value to compare
+     * @param {string} specKey - The specification key being compared
+     * @returns {boolean} - Whether valueA is better than valueB
+     */
+    function isBetterValue(valueA, valueB, specKey) {
+        // For pricing, lower is better
+        if (specKey.toLowerCase().includes('price')) {
+            const priceA = extractPriceValue(valueA);
+            const priceB = extractPriceValue(valueB);
+            return priceA > 0 && priceB > 0 && priceA < priceB;
+        }
+        
+        // For ratings, higher is better
+        if (specKey.toLowerCase().includes('rating')) {
+            const ratingA = parseFloat(valueA);
+            const ratingB = parseFloat(valueB);
+            return !isNaN(ratingA) && !isNaN(ratingB) && ratingA > ratingB;
+        }
+        
+        // For memory/storage/capacity, higher is usually better
+        if (specKey.toLowerCase().includes('storage') || 
+            specKey.toLowerCase().includes('memory') || 
+            specKey.toLowerCase().includes('capacity') ||
+            specKey.toLowerCase().includes('ram')) {
+            const numA = extractNumericValue(valueA);
+            const numB = extractNumericValue(valueB);
+            return numA > numB;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Extracts a numeric value from a string
+     * @param {string} value - The string to extract from
+     * @returns {number} - The extracted numeric value or 0
+     */
+    function extractNumericValue(value) {
+        if (!value) return 0;
+        
+        const match = value.match(/(\d+(\.\d+)?)/);
+        if (match) {
+            return parseFloat(match[0]);
+        }
+        
+        return 0;
     }
     
     /**

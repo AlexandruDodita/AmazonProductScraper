@@ -273,12 +273,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (error.toString().includes('CORS') || error.toString().includes('NetworkError')) {
             document.getElementById('cors-message').classList.remove('hidden');
             document.getElementById('amazon-error-message').classList.add('hidden');
+            document.getElementById('server-error-message').classList.add('hidden');
+        } else if (error.toString().includes('500') || error.toString().includes('Server error: 500')) {
+            document.getElementById('cors-message').classList.add('hidden');
+            document.getElementById('amazon-error-message').classList.add('hidden');
+            document.getElementById('server-error-message').classList.remove('hidden');
         } else if (error.toString().includes('No data scraped') || error.toString().includes('Amazon blocked')) {
             document.getElementById('cors-message').classList.add('hidden');
             document.getElementById('amazon-error-message').classList.remove('hidden');
+            document.getElementById('server-error-message').classList.add('hidden');
         } else {
             document.getElementById('cors-message').classList.add('hidden');
             document.getElementById('amazon-error-message').classList.add('hidden');
+            document.getElementById('server-error-message').classList.add('hidden');
         }
     }
 
@@ -654,7 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const specsTable = document.getElementById('specs-table');
         specsTable.innerHTML = '';
         
-        Object.entries(data.product_details.specifications).forEach(([key, value]) => {
+        Object.entries(data.product_details.specifications || {}).forEach(([key, value]) => {
             const row = document.createElement('tr');
             
             const keyCell = document.createElement('th');
