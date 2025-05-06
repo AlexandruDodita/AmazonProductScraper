@@ -1,5 +1,5 @@
 import logging
-from review_analyzer import ReviewAnalyzer
+from scripts.python.review_analyzer import ReviewAnalyzer
 
 def test_review_analyzer(url):
     """

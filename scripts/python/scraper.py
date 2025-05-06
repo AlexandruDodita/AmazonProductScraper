@@ -366,58 +366,189 @@ class AmazonScraper:
         
         return specs
     
-    def scrape_product(self, url: str) -> Tuple[Optional[str], Dict[str, Any]]:
+    def extract_product_image(self, html_content: str) -> Optional[str]:
         """
-        Scrape product information from an Amazon product page.
+        Extract the main product image URL from the HTML.
         
         Args:
-            url (str): The URL of the Amazon product page.
+            html_content (str): HTML content of the product page.
             
         Returns:
-            Tuple[Optional[str], Dict[str, Any]]: A tuple containing the product 
-            description and a dictionary of technical specifications.
+            Optional[str]: URL of the main product image or None if not found.
+        """
+        if not html_content:
+            return None
+            
+        soup = BeautifulSoup(html_content, 'html.parser')
+        
+        # Try multiple possible selectors for the main product image
+        image_selectors = [
+            "#landingImage",  # Most common location
+            "#imgBlkFront",   # Common for books
+            "#main-image",    # Another common selector
+            ".a-dynamic-image#main-image",
+            "#imageBlock_feature_div img",
+            "#mainImageContainer img",
+            "#ebooksImgBlkFront",
+            "#image-block-container img",
+            "#img-wrapper img",
+            "#main-image-container img"
+        ]
+        
+        for selector in image_selectors:
+            try:
+                img_element = soup.select_one(selector)
+                if img_element:
+                    # Try different attributes where the image URL might be found
+                    for attr in ['data-old-hires', 'data-a-dynamic-image', 'src', 'data-zoom-image', 'data-src']:
+                        img_url = img_element.get(attr)
+                        if img_url:
+                            # For data-a-dynamic-image, it's a JSON string with URLs
+                            if attr == 'data-a-dynamic-image':
+                                import json
+                                try:
+                                    img_json = json.loads(img_url)
+                                    # Get the URL with the highest resolution
+                                    img_url = list(img_json.keys())[0]
+                                except:
+                                    continue
+                                
+                            # Make sure we have a full URL
+                            if img_url.startswith('//'):
+                                img_url = f"https:{img_url}"
+                                
+                            self.logger.info(f"Found product image using selector: {selector}")
+                            return img_url
+            except Exception as e:
+                self.logger.warning(f"Error extracting image with selector {selector}: {str(e)}")
+                continue
+                
+        # Try to find in the image carousel if direct selectors didn't work
+        try:
+            carousel = soup.select_one('#imageBlock') or soup.select_one('#altImages')
+            if carousel:
+                all_images = carousel.select('img')
+                for img in all_images:
+                    if img.get('src') and not 'sprite' in img.get('src'):
+                        img_url = img.get('src')
+                        # Replace thumbnail URL with full-sized image URL
+                        img_url = re.sub(r'._S[X0-9]+_\.', '.', img_url)
+                        return img_url
+        except Exception as e:
+            self.logger.warning(f"Error extracting image from carousel: {str(e)}")
+                
+        return None
+    
+    def extract_product_price(self, html_content: str) -> Optional[str]:
+        """
+        Extract the product price from the HTML.
+        
+        Args:
+            html_content (str): HTML content of the product page.
+            
+        Returns:
+            Optional[str]: Product price as a string or None if not found.
+        """
+        if not html_content:
+            return None
+            
+        soup = BeautifulSoup(html_content, 'html.parser')
+        
+        # Try multiple possible selectors for the price
+        price_selectors = [
+            "#priceblock_ourprice",  # Most common location
+            "#priceblock_saleprice",  # Sale price
+            "#priceblock_dealprice",  # Deal price
+            ".a-price .a-offscreen",  # New price format
+            ".a-price span.a-offscreen",  # Another common format
+            "#price_inside_buybox",  # Price in buy box
+            ".a-color-price",  # Generic price class
+            ".a-section .a-price",  # Another price container
+            "#usedBuySection .a-color-price",  # Used price
+            "#tmmSwatches .a-color-price"  # Format price
+        ]
+        
+        for selector in price_selectors:
+            try:
+                price_element = soup.select_one(selector)
+                if price_element:
+                    price_text = price_element.get_text(strip=True)
+                    if price_text:
+                        self.logger.info(f"Found product price using selector: {selector}")
+                        return price_text
+            except Exception as e:
+                self.logger.warning(f"Error extracting price with selector {selector}: {str(e)}")
+                continue
+                
+        # Try to find price within product details if not found elsewhere
+        try:
+            # Look for any element that might contain price information
+            price_keywords = ["Price:", "Price", "$", "USD", "Cost:", "Current Price:"]
+            for keyword in price_keywords:
+                elements = soup.find_all(text=lambda text: text and keyword in text)
+                for element in elements:
+                    # Extract price pattern
+                    price_match = re.search(r'(\$\d+(?:\.\d{2})?)', element.strip())
+                    if price_match:
+                        self.logger.info(f"Found product price using keyword search: {keyword}")
+                        return price_match.group(1)
+        except Exception as e:
+            self.logger.warning(f"Error extracting price with keyword search: {str(e)}")
+                
+        return None
+    
+    def scrape_product(self, url: str) -> Tuple[Optional[str], Dict[str, Any], Optional[str], Optional[str]]:
+        """
+        Scrape product description, specifications, image, and price from an Amazon product page.
+        
+        Args:
+            url (str): URL of the Amazon product page.
+            
+        Returns:
+            Tuple[Optional[str], Dict[str, Any], Optional[str], Optional[str]]: 
+                description, specifications, image URL, and price
         """
         html_content = self.fetch_page(url)
+        
         if not html_content:
-            self.logger.error(f"Failed to fetch content from {url}")
-            return None, {}
-        
-        if len(html_content) < 1000:
-            self.logger.warning(f"Received suspiciously small HTML ({len(html_content)} chars). Might be blocked or redirected.")
-            # Write the html to a debug file for inspection
-            with open("debug_amazon_response.html", "w", encoding="utf-8") as f:
-                f.write(html_content)
-            self.logger.info("Saved response HTML to debug_amazon_response.html")
-        
+            self.logger.error("Failed to fetch product page")
+            return None, {}, None, None
+            
+        # Extract the product description
         description = self.extract_product_description(html_content)
-        tech_specs = self.extract_tech_specs(html_content)
+        if description:
+            self.logger.info("Successfully extracted product description")
+            
+        # Extract the product technical specifications
+        specs = self.extract_tech_specs(html_content)
+        if specs:
+            self.logger.info(f"Successfully extracted {len(specs)} technical specifications")
+            
+        # Extract the product image URL
+        image_url = self.extract_product_image(html_content)
+        if image_url:
+            self.logger.info(f"Successfully extracted product image URL: {image_url}")
         
-        # Try to extract product title for debugging
-        try:
-            soup = BeautifulSoup(html_content, 'html.parser')
-            title = soup.select_one("#productTitle")
-            if title:
-                self.logger.info(f"Product title: {title.get_text(strip=True)}")
-        except Exception:
-            pass
+        # Extract the product price
+        price = self.extract_product_price(html_content)
+        if price:
+            self.logger.info(f"Successfully extracted product price: {price}")
         
-        return description, tech_specs
+        return description, specs, image_url, price
 
-
-def scrape_amazon_product(url: str) -> Tuple[Optional[str], Dict[str, Any]]:
+def scrape_amazon_product(url: str) -> Tuple[Optional[str], Dict[str, Any], Optional[str], Optional[str]]:
     """
-    Utility function to scrape a single Amazon product page.
+    Utility function to scrape product details from an Amazon product page.
     
     Args:
-        url (str): The URL of the Amazon product page.
+        url (str): URL of the Amazon product page.
         
     Returns:
-        Tuple[Optional[str], Dict[str, Any]]: A tuple containing the product 
-        description and a dictionary of technical specifications.
+        Tuple[Optional[str], Dict[str, Any], Optional[str], Optional[str]]: 
+            description, specifications, image URL, and price
     """
     scraper = AmazonScraper()
     return scraper.scrape_product(url)
-
 
 # Example usage
 if __name__ == "__main__":
@@ -431,14 +562,18 @@ if __name__ == "__main__":
     url = "https://www.amazon.com/dp/B09X7MPX8L"
     
     # Option 1: Use the utility function
-    description, specs = scrape_amazon_product(url)
+    description, specs, image_url, price = scrape_amazon_product(url)
     
     # Option 2: Create and use a scraper instance directly
     # scraper = AmazonScraper()
-    # description, specs = scraper.scrape_product(url)
+    # description, specs, image_url, price = scraper.scrape_product(url)
     
     print("Product Description:")
     print(description)
     print("\nTechnical Specifications:")
     for key, value in specs.items():
         print(f"{key}: {value}")
+    print("\nProduct Image URL:")
+    print(image_url)
+    print("\nProduct Price:")
+    print(price)

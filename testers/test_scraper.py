@@ -1,6 +1,6 @@
 import sys
 import logging
-from scraper import AmazonScraper
+from scripts.python.scraper import AmazonScraper
 
 def test_amazon_scraper(url):
     """
@@ -23,7 +23,7 @@ def test_amazon_scraper(url):
     
     # Scrape the product
     logger.info("Starting scrape process...")
-    description, specs = scraper.scrape_product(url)
+    description, specs, image_url, price = scraper.scrape_product(url)
     
     # Output results
     print("\n" + "="*50)
@@ -43,7 +43,23 @@ def test_amazon_scraper(url):
     else:
         print("No specifications found.")
     
-    return description, specs
+    print("\n" + "="*50)
+    print("PRODUCT IMAGE URL")
+    print("="*50)
+    if image_url:
+        print(image_url)
+    else:
+        print("No image URL found.")
+        
+    print("\n" + "="*50)
+    print("PRODUCT PRICE")
+    print("="*50)
+    if price:
+        print(price)
+    else:
+        print("No price found.")
+    
+    return description, specs, image_url, price
 
 if __name__ == "__main__":
     # The Amazon product URL for the HAWKIN Classic pressure cooker

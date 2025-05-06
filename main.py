@@ -5,9 +5,9 @@ import sys
 import json
 from typing import Dict, Any, List, Optional
 
-from scraper import AmazonScraper, scrape_amazon_product
-from review_analyzer import ReviewAnalyzer, analyze_product_reviews
-from ai_summarizer import ReviewSummarizer, summarize_reviews
+from scripts.python.scraper import AmazonScraper, scrape_amazon_product
+from scripts.python.review_analyzer import ReviewAnalyzer, analyze_product_reviews
+from scripts.python.ai_summarizer import ReviewSummarizer, summarize_reviews
 
 def setup_logging(verbose: bool = False) -> None:
     """Configure logging for the application."""
@@ -21,12 +21,14 @@ def setup_logging(verbose: bool = False) -> None:
     )
 
 def extract_product_details(url: str) -> Dict[str, Any]:
-    """Extract product description and specifications."""
-    description, specs = scrape_amazon_product(url)
+    """Extract product description, specifications, image URL, and price."""
+    description, specs, image_url, price = scrape_amazon_product(url)
     
     return {
         "description": description,
-        "specifications": specs
+        "specifications": specs,
+        "image_url": image_url,
+        "price": price
     }
 
 def extract_and_analyze_reviews(url: str, max_pages: int = 3) -> Dict[str, Any]:
@@ -66,6 +68,14 @@ def print_summary(data: Dict[str, Any]) -> None:
         print(f"\nProduct: {specs.get('Brand', '')} {specs.get('Title', '')}")
         print(f"ASIN: {specs.get('ASIN', 'Unknown')}")
         
+        # Print price if available
+        if data["product_details"].get("price"):
+            print(f"Price: {data['product_details']['price']}")
+        
+        # Print image URL if available
+        if data["product_details"].get("image_url"):
+            print(f"Image URL: {data['product_details']['image_url']}")
+        
         # Print a few key specifications
         important_specs = ["Brand", "Capacity", "Material", "Color", "Product Dimensions", "Item Weight"]
         print("\nSpecifications:")
@@ -84,6 +94,40 @@ def print_summary(data: Dict[str, Any]) -> None:
             print("\nRating Distribution:")
             for star, count in analysis["rating_counts"].items():
                 print(f"  {star}: {count} reviews")
+        
+        # Top positive reviews
+        if "top_positive_reviews" in analysis and analysis["top_positive_reviews"]:
+            print("\n" + "-"*80)
+            print("TOP POSITIVE REVIEWS")
+            print("-"*80)
+            for i, review in enumerate(analysis["top_positive_reviews"], 1):
+                print(f"{i}. {review['title']} - {review['rating']} stars")
+                print(f"   By: {review.get('reviewer_name', 'Anonymous')} | Date: {review.get('date', 'Unknown')}")
+                print(f"   Verified Purchase: {'Yes' if review.get('verified_purchase') else 'No'} | Helpful Votes: {review.get('helpful_votes', 0)}")
+                
+                # Truncate long review texts
+                text = review['text']
+                if len(text) > 150:
+                    text = text[:150] + "..."
+                print(f"   {text}")
+                print()
+        
+        # Top negative reviews
+        if "top_negative_reviews" in analysis and analysis["top_negative_reviews"]:
+            print("\n" + "-"*80)
+            print("TOP NEGATIVE REVIEWS")
+            print("-"*80)
+            for i, review in enumerate(analysis["top_negative_reviews"], 1):
+                print(f"{i}. {review['title']} - {review['rating']} stars")
+                print(f"   By: {review.get('reviewer_name', 'Anonymous')} | Date: {review.get('date', 'Unknown')}")
+                print(f"   Verified Purchase: {'Yes' if review.get('verified_purchase') else 'No'} | Helpful Votes: {review.get('helpful_votes', 0)}")
+                
+                # Truncate long review texts
+                text = review['text']
+                if len(text) > 150:
+                    text = text[:150] + "..."
+                print(f"   {text}")
+                print()
     
     # AI summary
     if "ai_summary" in data:

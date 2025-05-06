@@ -5,7 +5,7 @@ import time
 import logging
 from typing import List, Dict, Optional, Any, Tuple
 from bs4 import BeautifulSoup
-from scraper import AmazonScraper
+from .scraper import AmazonScraper
 
 class ReviewAnalyzer:
     """
@@ -376,13 +376,13 @@ class ReviewAnalyzer:
     
     def analyze_sentiment(self, reviews: List[Dict[str, Any]]) -> Dict[str, Any]:
         """
-        Perform basic statistical analysis on reviews.
+        Perform basic statistical analysis on reviews and extract top positive and negative reviews.
         
         Args:
             reviews (List[Dict[str, Any]]): List of review dictionaries.
             
         Returns:
-            Dict[str, Any]: Analysis results.
+            Dict[str, Any]: Analysis results including top reviews.
         """
         if not reviews:
             return {
@@ -390,7 +390,9 @@ class ReviewAnalyzer:
                 'total_reviews': 0,
                 'rating_counts': {},
                 'verified_count': 0,
-                'verified_percentage': 0.0
+                'verified_percentage': 0.0,
+                'top_positive_reviews': [],
+                'top_negative_reviews': []
             }
         
         # Calculate average rating
@@ -407,12 +409,29 @@ class ReviewAnalyzer:
         verified_count = sum(1 for review in reviews if review['verified_purchase'])
         verified_percentage = (verified_count / len(reviews)) * 100
         
+        # Extract top positive reviews (4-5 stars)
+        positive_reviews = [r for r in reviews if r['rating'] >= 4.0]
+        # Sort by helpfulness (if available) or most recent
+        positive_reviews.sort(key=lambda x: (x.get('helpful_votes', 0), x.get('date', '')), reverse=True)
+        top_positive = positive_reviews[:5]  # Get top 5
+        
+        # Extract top negative reviews (1-2 stars)
+        negative_reviews = [r for r in reviews if r['rating'] <= 2.0]
+        # Sort by helpfulness (if available) or most recent
+        negative_reviews.sort(key=lambda x: (x.get('helpful_votes', 0), x.get('date', '')), reverse=True)
+        top_negative = negative_reviews[:5]  # Get top 5
+        
+        self.logger.info(f"Found {len(positive_reviews)} positive reviews and {len(negative_reviews)} negative reviews")
+        self.logger.info(f"Selected top {len(top_positive)} positive and top {len(top_negative)} negative reviews")
+        
         return {
             'average_rating': round(average_rating, 2),
             'total_reviews': len(reviews),
             'rating_counts': rating_counts,
             'verified_count': verified_count,
-            'verified_percentage': round(verified_percentage, 2)
+            'verified_percentage': round(verified_percentage, 2),
+            'top_positive_reviews': top_positive,
+            'top_negative_reviews': top_negative
         }
     
     def find_similar_products(self, product_url: str) -> List[Dict[str, Any]]:

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Product Analyzer</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <meta name="description" content="Analyze Amazon product reviews and get AI-generated summaries to make informed purchasing decisions.">
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <header class="app-header">
+      <h1>Amazon Product Analyzer</h1>
+      <p>Get AI-powered insights from product reviews to make informed purchasing decisions</p>
+    </header>
+
+    <!-- Form Section -->
+    <section class="form-container">
+      <div class="card">
+        <form id="analyze-form">
+          <div class="form-group">
+            <label for="product-url">Amazon Product URL</label>
+            <input type="url" id="product-url" class="form-control" 
+                   placeholder="https://www.amazon.com/dp/B08XX..." 
+                   required>
+          </div>
+          <div id="error-message" class="error-message hidden"></div>
+          <button type="submit" class="button full-width">Analyze Product</button>
+        </form>
+      </div>
+      <!-- Loading Spinner -->
+      <div id="loading-spinner" class="spinner hidden"></div>
+    </section>
+
+    <!-- Fallback Container (shown when fetch fails) -->
+    <section id="fallback-container" class="card error-container hidden">
+      <h2>Data Loading Error</h2>
+      <div class="error-box">
+        <p>We encountered an error while trying to load the product data:</p>
+        <pre id="error-details" class="error-details"></pre>
+        
+        <div id="cors-message" class="cors-message hidden">
+          <h3>CORS Error Detected</h3>
+          <p>This appears to be a CORS (Cross-Origin Resource Sharing) error, which commonly occurs when:</p>
+          <ul>
+            <li>Running the application directly from your filesystem</li>
+            <li>Trying to access local files using JavaScript's fetch API</li>
+          </ul>
+          <p>To fix this issue, you can:</p>
+          <ol>
+            <li>Run the application through a local server instead of opening the HTML file directly</li>
+            <li>Use the sample data option below to see how the interface works</li>
+          </ol>
+        </div>
+      </div>
+      <div class="button-group">
+        <button id="try-fallback" class="button">Use Sample Data</button>
+        <button onclick="window.location.reload()" class="button button-secondary">Try Again</button>
+      </div>
+    </section>
+
+    <!-- Results Container (hidden by default) -->
+    <section id="results-container" class="hidden">
+      <!-- Product Card -->
+      <section class="card">
+        <div class="product-card">
+          <img id="product-image" class="product-image" src="" alt="Product Image">
+          <div class="product-details">
+            <h2 id="product-title"></h2>
+            <div id="product-price" class="product-price"></div>
+            <p id="product-description" class="product-description"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Specifications -->
+      <section class="card">
+        <h2>Specifications</h2>
+        <table class="specs-table" id="specs-table">
+          <!-- Table rows will be inserted dynamically -->
+        </table>
+      </section>
+
+      <!-- Review Highlights -->
+      <section class="card review-highlights">
+        <h2>Review Highlights</h2>
+        <p id="summary-text" class="summary-text"></p>
+        
+        <div class="pros-cons">
+          <div class="pros">
+            <h3>Pros</h3>
+            <ul id="pros-list">
+              <!-- List items will be inserted dynamically -->
+            </ul>
+          </div>
+          
+          <div class="cons">
+            <h3>Cons</h3>
+            <ul id="cons-list">
+              <!-- List items will be inserted dynamically -->
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Top Reviews -->
+      <section class="card reviews-section">
+        <h2>Top Reviews</h2>
+        <div id="reviews-list">
+          <!-- Review articles will be inserted dynamically -->
+        </div>
+      </section>
+
+      <!-- Similar Products -->
+      <section id="similar-products-container" class="card similar-products">
+        <h2>Similar Products</h2>
+        <div id="similar-products-list" class="similar-products-list">
+          <!-- Similar product items will be inserted dynamically -->
+        </div>
+      </section>
+
+      <!-- Compare Another Button -->
+      <div class="text-center">
+        <button id="compare-another" class="button">Compare Another Product</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>&copy; 2025 Amazon Product Analyzer. All reviews and product data belong to their respective owners.</p>
+    </footer>
+  </div>
+
+  <script src="../scripts/js/app.js"></script>
+</body>
+</html> 

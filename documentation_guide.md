@@ -9,6 +9,8 @@
 - [Usage](#-usage)
 - [System Architecture](#-system-architecture)
 - [Project Structure](#-project-file-structure)
+- [Frontend Interface](#-frontend-interface)
+- [Local Development](#-local-development)
 - [Future Development](#-future-components)
 - [Testing](#-test-components)
 
@@ -61,14 +63,18 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
   "url": "https://www.amazon.com/dp/B00SX2YSMS",
   "product_details": {
     "description": "Product description...",
-    "specifications": { ... }
+    "specifications": { ... },
+    "image_url": "https://m.media-amazon.com/images/I/71XCVyI4unL._AC_SX522_.jpg",
+    "price": "$195.99"
   },
   "review_data": {
     "reviews": [ ... ],
     "analysis": {
       "average_rating": 4.5,
       "total_reviews": 15,
-      "rating_counts": { ... }
+      "rating_counts": { ... },
+      "top_positive_reviews": [ ... ],
+      "top_negative_reviews": [ ... ]
     }
   },
   "ai_summary": {
@@ -99,7 +105,7 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
                       │              │
                       ▼              ▼
               ┌─────────────┐ ┌──────────────┐
-              │  JSON Data  │ │Command Line UI│
+              │  JSON Data  │ │   User UI    │
               └─────────────┘ └──────────────┘
 ```
 
@@ -108,7 +114,7 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 2. **Web Scraping**: Extract product details, reviews, and similar products
 3. **Analysis**: Calculate statistics and metrics from review data
 4. **AI Processing**: Generate summaries, extract key points, pros and cons
-5. **Output**: JSON formatted data and terminal readable summary
+5. **Output**: JSON formatted data and user-friendly UI presentation
 
 ---
 
@@ -122,13 +128,13 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 | Function | Description |
 |----------|-------------|
 | **`setup_logging(verbose)`** | Configures logging with appropriate verbosity level |
-| **`extract_product_details(url)`** | Extracts product information and specifications |
+| **`extract_product_details(url)`** | Extracts product information, specifications, and image URL |
 | **`extract_and_analyze_reviews(url, max_pages)`** | Extracts and analyzes product reviews |
 | **`generate_ai_summary(reviews, api_key)`** | Generates AI summaries from review data |
 | **`process_product(...)`** | Main pipeline function |
 | **`main()`** | Entry point that handles CLI arguments |
 
-#### [`scraper.py`](scraper.py) - Core scraping functionality
+#### [`scripts/python/scraper.py`](scripts/python/scraper.py) - Core scraping functionality
 *Extracts product data from Amazon pages*
 
 **`AmazonScraper`** - OOP implementation with resilient HTML parsing
@@ -136,12 +142,14 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 - **`fetch_page(url)`** - Retrieves HTML content with error handling
 - **`extract_product_description(html_content)`** - Parses product descriptions
 - **`extract_tech_specs(html_content)`** - Extracts technical specifications
+- **`extract_product_image(html_content)`** - Extracts product display image URL
+- **`extract_product_price(html_content)`** - Extracts product price
 - **`scrape_product(url)`** - Main orchestration method
 
 **Utility Functions**
 - **`scrape_amazon_product(url)`** - Simplified access to scraping functionality
 
-#### [`review_analyzer.py`](review_analyzer.py) - Review processing and analysis
+#### [`scripts/python/review_analyzer.py`](scripts/python/review_analyzer.py) - Review processing and analysis
 *Extracts and analyzes Amazon product reviews*
 
 **`ReviewAnalyzer`** - Handles review extraction and sentiment analysis
@@ -149,14 +157,14 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 - **`extract_reviews(product_url, max_pages)`** - Extracts reviews with direct web scraping
 - **`_parse_review_page(html_content)`** - Parses HTML for reviews
 - **`_extract_review_snippets(soup)`** - Extracts review snippets from product pages
-- **`analyze_sentiment(reviews)`** - Analyzes rating distribution and sentiment
+- **`analyze_sentiment(reviews)`** - Analyzes rating distribution, sentiment, and extracts top positive/negative reviews
 - **`find_similar_products(product_url)`** - Finds similar products through web scraping
 - **`_extract_similar_product_info(element)`** - Extracts product details
 
 **Utility Functions**
 - **`analyze_product_reviews(url, max_review_pages)`** - Quick review analysis
 
-#### [`ai_summarizer.py`](ai_summarizer.py) - AI integration
+#### [`scripts/python/ai_summarizer.py`](scripts/python/ai_summarizer.py) - AI integration
 *Generates summaries from review data*
 
 **`ReviewSummarizer`** - Creates concise, AI-generated summaries
@@ -167,18 +175,116 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 **Utility Functions**
 - **`summarize_reviews(reviews, api_key)`** - Quick summary generation
 
+### 🔸 Frontend Components
+
+#### [`pages/index.html`](pages/index.html) - Main application interface
+*Provides user interface for analyzing Amazon products*
+
+**Semantic Structure**
+- **`<header>`** - App name and description
+- **`<section class="form-container">`** - URL input form
+- **`<section id="results-container">`** - Product analysis results
+- **`<section id="fallback-container">`** - Error handling interface
+- **`<footer>`** - Copyright and attribution
+
+**Key Sections**
+- **Product Card** - Displays product image, title, price, and description
+- **Specifications Table** - Shows product specifications in a two-column layout
+- **Review Highlights** - Displays AI-generated summary with pros and cons
+- **Top Reviews** - Shows the top 3 user reviews with metadata
+- **Similar Products** - Displays alternative product options if available
+- **Error Handling** - Dedicated error display with CORS troubleshooting
+
+#### [`styles/main.css`](styles/main.css) - Styling for the application
+*Mobile-first responsive design with clean visual components*
+
+**Key Features**
+- **Responsive Layout** - Adapts to different screen sizes
+- **Card-based Design** - Clear visual separation of content sections
+- **Modern Typography** - Clean and readable text hierarchy
+- **Loading Indicators** - Visual feedback during data processing
+- **Error Displays** - Informative error messages with troubleshooting help
+
+#### [`scripts/js/app.js`](scripts/js/app.js) - Client-side functionality
+*Handles user interactions and data rendering*
+
+**`DOMContentLoaded` Event Handler** - Sets up the application when page loads
+
+**Key Functions**
+- **`handleAnalyzeSubmit(e)`** - Processes form submission and fetches product data
+- **`renderProductData(data)`** - Populates the UI with product information
+- **`showFallbackError(error)`** - Displays user-friendly error messages
+- **`useFallbackData()`** - Provides mock data when real data can't be fetched
+- **`showLoading()`/`hideLoading()`** - Manages loading state visibility
+- **`resetUI()`** - Returns to initial state for analyzing another product
+
+## 🌐 Local Development
+
+To run the application locally and avoid CORS issues, use one of these approaches:
+
+### Using a Local Server
+
+The simplest way to run the application is with a local web server:
+
+#### Python HTTP Server
+```bash
+# Navigate to project directory
+cd amazon-product-analyzer
+
+# Start a simple HTTP server
+python -m http.server 8000
+```
+Then open http://localhost:8000/pages/index.html in your browser.
+
+#### Node.js HTTP Server
+If you have Node.js installed:
+```bash
+# Install http-server globally if not already installed
+npm install -g http-server
+
+# Start server in project directory
+http-server -p 8000
+```
+
+### Handling CORS Errors
+
+If you encounter CORS errors when developing locally:
+
+1. **Use the Fallback Data**:
+   - The application includes a fallback option that uses sample data when CORS errors occur
+   - Click "Use Sample Data" on the error screen to see how the UI works with mock data
+
+2. **Modify Fetch Paths**:
+   - Ensure the path to review.json is relative to the HTML file location
+   - Update the path in app.js to correctly target the JSON file
+
+3. **Browser Extensions**:
+   - For testing only, you can use browser extensions that disable CORS restrictions
+   - Note: This approach is not recommended for production use
+
+### Testing the Interface
+
+To test the UI without a backend:
+
+```bash
+# Check if all required files are in place
+node scripts/test-ui.js
+```
+
+This will verify the file structure and JSON format.
+
 ---
 
 ### 🔹 Future Components
 
-#### `product_comparator.py` - Product comparison
+#### `scripts/python/product_comparator.py` - Product comparison
 *Will compare similar products based on reviews and specifications*
 
 **`ProductComparator`** - Will find and compare similar products
 - **`find_similar_products(product_id)`** - Will locate similar products
 - **`generate_comparison_table(products)`** - Will create comparison data
 
-#### `api_service.py` - API endpoints
+#### `scripts/python/api_service.py` - API endpoints
 *Will provide RESTful endpoints for frontend integration*
 
 **`APIService`** - Will expose data through a REST API
@@ -189,12 +295,12 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 
 ### 🧪 Test Components
 
-#### [`test_scraper.py`](test_scraper.py)
+#### [`testers/test_scraper.py`](testers/test_scraper.py)
 - **`test_amazon_scraper(url)`** - Tests product extraction
 
-#### [`test_review_analyzer.py`](test_review_analyzer.py)
+#### [`testers/test_review_analyzer.py`](testers/test_review_analyzer.py)
 - **`test_review_analyzer(url)`** - Tests review extraction and analysis
 
-#### [`test_ai_summarizer.py`](test_ai_summarizer.py)
+#### [`testers/test_ai_summarizer.py`](testers/test_ai_summarizer.py)
 - **`test_ai_summarizer()`** - Tests AI summary generation
 - **`test_full_pipeline(product_url)`** - Tests the complete workflow 

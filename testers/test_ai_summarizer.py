@@ -1,6 +1,6 @@
 import logging
-from ai_summarizer import ReviewSummarizer
-from review_analyzer import ReviewAnalyzer
+from scripts.python.ai_summarizer import ReviewSummarizer
+from scripts.python.review_analyzer import ReviewAnalyzer
 
 def test_ai_summarizer():
     """
