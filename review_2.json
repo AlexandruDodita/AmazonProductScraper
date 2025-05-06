@@ -1,0 +1,201 @@
+{
+  "url": "https://www.amazon.com/AMD-Ryzen-5800X-16-Thread-Processor/dp/B0815XFSGK/136-3977884-4958130?pd_rd_w=xACoo&content-id=amzn1.sym.8c8432aa-1bf0-4437-b5fa-12091a348861&pf_rd_p=8c8432aa-1bf0-4437-b5fa-12091a348861&pf_rd_r=BJ1CM5K0369MCQKCWFRG&pd_rd_wg=JdHEK&pd_rd_r=edf608b7-0e07-4c67-ba24-3d5ef35329b1&pd_rd_i=B0815XFSGK&th=1",
+  "product_details": {
+    "description": "Be unstoppable with the unprecedented speed of the world’s best desktop processors. AMD Ryzen 5000 Series processors deliver the ultimate in high performance, whether you’re playing the latest games, designing the next skyscraper or crunching scientific data. With AMD Ryzen, you’re always in the lead. The Simple and Powerful Overclocking Utility for AMD Ryzen processors.",
+    "specifications": {
+      "Processor": "‎4.7 GHz amd_ryzen_7"
+    },
+    "image_url": "https://m.media-amazon.com/images/I/61IIbwz-+ML._AC_SL1500_.jpg",
+    "price": "$158.17"
+  },
+  "review_data": {
+    "reviews": [
+      {
+        "reviewer_name": "Darkoasis",
+        "title": "5.0 out of 5 starsAmazing CPU for Gaming!",
+        "rating": 5.0,
+        "date": "Reviewed in the United States on January 17, 2022",
+        "text": "I have had this CPU for around exactly one year now. Normally I do all my tech reviews fairly early but I wanted to really use this chip, overclock it, game, and do lighting editing as well. To start off my full system is a Ryzen 5800X, Asus X570-Pro board, 32GB of 3600mhz G.Skill CL16 memory (4x8GB), EVGA G3 Supernova 850 watt 80+ Gold PSU, EVGA RTX 2070 Super GPU, Cooler Master NR600 Case, Noctua NH-D15 Chromax Black Edition CPU cooler. I have two Gen 4 NVMe drives and 4 normal sata SSD drives. My case is filled with all Cooler Master Masterpro ARGB high CFM airflow fans. I’m also using an internal wireless card as well as my particular x570 board doesn’t come with onboard WiFi. My reason for stating all this is the airflow and cooling in my case is exceptional. I have one of the highest airflow cases, with some of the best fans, one of the best CPU coolers, and I’m using Thermal Grizzly Kryonaunt paste which is hands down the best CPU test for overclocking and temps in general imo. Stating all this because YOUR temps may be different than mine as well as your results. To start of with the chip I’ve not had ONE single issue with it so far after a year of use. ALL I have done to it after installing it in place of the Ryzen 3600 that it replaced was I enabled DOCP on my memory which is AMDs version of XMP and I enabled PBO on my chip with the max limit set at 200mhz. That it all I touched. This chip boosts to 5.1ghz when using 2-3 cores or less easily and even if under full load will still stay around 4.75ghz on all 8 cores at 100% load. In a more realistic load like gaming it runs around 4.75-4.95ghz. Under full load like Prime95 my temps top out around 74C. Idle is around low 30s and while gaming it bounces around 55-65C. It runs super fast and super cool. This is all on air cooling too. When going from the 3600 to the 5800X while every single other aspect of my system remained the same I gained anywhere from 10 fps to over 20 fps on some games. I play at 1440P as well. If you play at 1080P your results will be even better. This is the best chip I’ve ever used and owned. My RTX 2070 Super is overclocked 1100mhz on the memory and 140mhz on the core. On benchmarks my scores beat all stock and even factory OC 2080 Supers. They also beat almost all RTX 3060 ti results as well. I’ve never played a single game where this chip bottlenecks my card ever. Whereas with the 3600 it did from time to time. Especially in games using DLSS which renders the game at a much lower resolution then upscales it. That makes the game way more CPU demanding and in titles with DLSS my fps increase was huge. Absolutely amazing cpu for gaming and you don’t have to do anything other than enable PBO. Gone are the days of manual overclocking to get all the performance you paid for. The chips auto boost themselfs as high as they can go basically all by themselves now. If you have any Zen + or Zen 2 chip and wanna upgrade to Zen 3 aka Ryzen 5000 I say it’s well worth it for gaming. The IPC increase on Ryzen 5000 over 3000 series is huge. Over 30% faster. I’ve included pictures of my setup, CPUz info, benchmark results, MSI Afterburner temperature info after playing Witcher 3 at 1440P on Ultra settings for hours, and many other others. The chip boosts high, runs cool, requires basically no knowledge to get max performance from it outside of TWO toggles in the bios, and at its current price is an amazing value imo. Fast enough to pair any GPU on the market with it if you can find one. I’ve been wanting a 3080 forever now but just no luck. I paid the MSRP of 450 for this chip and don’t regret it at all. No crashes, no issues ever, never breaks 70C while daily use/gaming no matter how long, boosts over 5ghz, and has enough cores/threads if you wanna stream and multitask while gaming you’re good to go. I think AMD did an amazing job with Zen 3 and if you’re interested in the 5800X for gaming/streaming you won’t go wrong. Hope this review helped and if it does please leave a like. Enjoy the pics and thanks for reading.Read more",
+        "verified_purchase": false,
+        "helpful_votes": 0
+      },
+      {
+        "reviewer_name": "Noah Clark",
+        "title": "5.0 out of 5 starsplease read the first paragraph at least!!",
+        "rating": 5.0,
+        "date": "Reviewed in the United States on November 29, 2023",
+        "text": "so, i was one of the (statistically few) who hit the silicon lottery and struck dirt. basically, my 5800x was defective. this is just a PSA, if you encounter BSODs/crashes to reboot/fatal hardware errors after installing your new CPU, it is likely defective. i was getting WHEA_UNCORRECTABLE_ERROR at random times, event IDs WHEA-18 and 46. no combination of the CPU with a new motherboard, different ram, 1 stick of ram, XMP profiles off, PBO disabled, bios updates, windows reinstalls, chipset driver updates, or other device driver updates resolved the issue for me. it would occur under any load at any temperature. it's also worth mentioning that it worked fine for about 5 days before issues started to happen. if your PC is producing errors you simply cannot resolve and it started with the new CPU, please return it ASAP!! i have ordered a new one already and shipped the defective unit back. i used my old ryzen 2600 to isolate the 5800x as the issue, and my system runs completely stable as long as i keep it on. i'm sad it was defective, but ultimately, i'm not going to let it damage my opinion of the CPU, as defective products are guaranteed to slip through here and there, and amazon is extremely good about their return policy in my experience.anyway, with that out of the way, let's talk about the CPU itself. when mine was functioning normally, it was awesome. coming from an old ryzen 5 2600, the performance gain of the 5800x is a night and day difference. it's 3 years old now, but its price and still-relevant performance make it an immensely good value. it squeezed new fps gains out of my gtx 1080, and was far more than enough for my new rtx 4070. the gains in performance are even more obvious now that i'm back on the 2600 while i wait for my replacement to arrive. it was as easy to install as any other AM3/AM4 CPU. i will give a heads up however that it does run hot and is known to do so. however, AMD has explicitly stated that even 90°C is safe at full load. a high quality air cooler will be enough if you don't plan on doing serious overclocking, like me. a thermalright peerless assassin or scythe fuma should be more than enough for stock clocks with PBO left on auto. i paired this with 32gb of gskill ripjaws V with 3600mhz XMP profile, and the two paired wonderfully. the motherboard i ended up with is an MSI MAG B550 tomahawk max wifi, but the CPU will work just fine on most B450/X470 motherboards as long as your bios is up to date!!!! please do not let my disclaimer dissuade you from buying this amazing CPU, it can happen to anyone who buys any CPU, from Intel too! i can't wait for my replacement to arrive and complete my system, i wholeheartedly recommend this CPU for great performance per dollar.Read more",
+        "verified_purchase": false,
+        "helpful_votes": 0
+      },
+      {
+        "reviewer_name": "Francesco",
+        "title": "Prestazioni top nel 2025: Ryzen 5800X ancora validissimo!",
+        "rating": 5.0,
+        "date": "Reviewed in Italy on March 29, 2025",
+        "text": "⭐️⭐️⭐️⭐️⭐️ (5 su 5)Dopo anni con un Ryzen 5 2600X, sono passato a questo 5800X e il salto di prestazioni si nota eccome. È un processore di fascia alta per la piattaforma AM4, ideale sia per il gaming che per il lavoro pesante, e dopo più di un mese di utilizzo sono pienamente soddisfatto.✅ Pro:Prestazioni eccellenti: Gli 8 core e 16 thread offrono una potenza davvero notevole. In gaming spinge al massimo la mia RTX 3060, e in produttività (editing, multitasking, compiti pesanti) non si scompone mai.Compatibilità AM4: Uno dei punti forti di AMD è la longevità della piattaforma. L’ho montato su una B550 senza alcun problema, BIOS già aggiornato.Temperature sotto controllo (con buon dissipatore): Con un dissipatore aftermarket (Noctua NH-U12S Redux), le temperature restano sui 35-40°C in idle e 70-75°C sotto stress. Occhio: non ha dissipatore incluso, ma lo sapevo prima dell’acquisto.Rapporto prezzo/prestazioni ottimo nel 2025: Acquistato a 186€, rappresenta un best buy considerando quanto offre. Super competitivo.❌ Contro:Scalda parecchio con dissipatori stock (che però non sono inclusi): È noto per essere uno dei Ryzen più caldi della serie 5000. Se usi un raffreddamento economico o inadatto, le temperature possono impennarsi.Consumi più alti rispetto ad altri Ryzen 5000: Nulla di eccessivo, ma si fa notare sotto carico rispetto ad esempio al 5700X.Il Ryzen 7 5800X è una scelta eccellente se cerchi un processore potente per AM4. Ancora nel 2025, regge perfettamente ogni tipo di carico. Serve solo abbinarlo a un buon dissipatore e sei a posto per anni. Nessun problema di compatibilità, prestazioni super, e prezzo ormai molto accessibile.Voto finale: 5/5Read more",
+        "verified_purchase": false,
+        "helpful_votes": 0
+      },
+      {
+        "reviewer_name": "Brandon D.",
+        "title": "Good time to upgrade",
+        "rating": 5.0,
+        "date": "Reviewed in Canada on October 24, 2024",
+        "text": "Scored it for a great price which made upgrading from my 3600 a great value. 8 cores, super high boost speeds, it performs great. AMDs support of the AM4 platform for so long has really allowed people to stretch out the lifespan of their older systems providing a nice upgrade path even still.I  read that it can run hot but so far the hyper 212 halo I got for it is doing a great job keeping it cool. I don't plan on any overclocking.  Would have liked a 5800x3D but the price is too much for me.  For what I play it would have been overkill anyway.AMD has come a long way and their CPU's and GPUs are of great value for performance.Read more",
+        "verified_purchase": false,
+        "helpful_votes": 0
+      },
+      {
+        "reviewer_name": "Irving",
+        "title": "Buen producto pero hay que tomar consideraciones",
+        "rating": 5.0,
+        "date": "Reviewed in Mexico on August 13, 2024",
+        "text": "El producto es muy bueno. Es un procesador que por sus características permite sacar el máximo provecho a juegos (razón por la que yo lo compré). Actualmente tengo mi computadora junto con una rtx 3060 y me parece que el rendimiento es óptimo y de mucha calidad.Mi computadora tiene una refrigeración bastante buena creo yo, por lo que no me preocupa medir las temperaturas. Además, tampoco soy el tipo de usuario que se dedica a ver estadísticas para ver cuánto rendimiento están dando los programas que ejecuto. Lo más que hago es usar la aplicación de Nvidia y ver los porcentajes que me brinda. Mi experiencia de juego es buena y eso es suficiente para mí. Tengo claro que para aprovechar al máximo este procesador es importante la refrigeración que se le pueda dar, por lo que las recomendaciones que yo daría para comprar este procesador son dos:-- En verdad considera la refrigeración y el espacio de tu gabinete, serán de mucha ayuda para que permita al procesador trabajar con libertad.-- Los componentes que acompañan al procesador deben ser acorde a la calidad de este. No me refiero al precio o marca, más bien al rendimiento que deben dar para no causar un cuello de botella excesivo.Read more",
+        "verified_purchase": false,
+        "helpful_votes": 0
+      },
+      {
+        "reviewer_name": "Mateus",
+        "title": "Excelente processador",
+        "rating": 5.0,
+        "date": "Reviewed in Brazil on December 30, 2024",
+        "text": "Produto muito bom mesmo, só tenho elogios pois é extremamente potente e quando soma com uma 4060 e 32GB de RAM fica muito top, e outro ponto que me deixou muito feliz foi o preço que foi muito abaixo do preço atual. O ponto negativo foi apenas a embalagem pois não veio tão bem protegido como outros produtos que comprei, mas chegou dentro do prazo.OBS: Por ser um produto de alto desempenho recomendo comprar se você já tiver equipamento compatível para não ter limitações entre placa de video e processador.Read more",
+        "verified_purchase": false,
+        "helpful_votes": 0
+      },
+      {
+        "reviewer_name": "MiguiOceano",
+        "title": "SIN GRÁFICOS INTEGRADOS",
+        "rating": 5.0,
+        "date": "Reviewed in Spain on March 17, 2025",
+        "text": "The media could not be loaded.📝 DESCRIPCIÓNProcesador de alto rendimiento lanzado en 2020, ideal para juegos y tareas multitarea avanzadas.Procesador actual de AMD en Amazon: https://amzn.to/4iHsMlw🧾 ESPECIFICACIONES- Núcleos: 8, hilos: 16.- Velocidad base: 3,8 GHz, turbo: hasta 4,7 GHz.- Caché L2: 4 MB, L3: 32 MB.- Consumo: 105 W.- Socket: AM4.- Memoria: DDR4 hasta 3200 MHz.- Lanzamiento: Q4/2020.📦 CONTENIDO- Procesador Ryzen 7 5800X.- Guía de instalación.💶 PRECIO- 30 de Noviembre de 2024: 158,80 €.🟢 PROS• Gran rendimiento en juegos y multitarea.• Configuración 8 núcleos / 16 hilos para tareas exigentes.• Compatible con Windows y Linux.• Eficiente en consumo energético.🔴 CONTRAS• No tiene gráficos integrados. Requiere una tarjeta gráfica.• Calor bajo carga extrema, requiere refrigeración de calidad.• No incluye disipador.• Modelo de 2020, no es la última generación (Ryzen 7 9700X lanzado en Q3/2024).🎛️ MONTAJE DE MI PC- Placa base: MSI Placa base MPG B550 Gaming Plus - https://amzn.to/4gO0mo7- Gráfica: Gigabyte NVIDIA GeForce RTX 3060 GAMING - https://amzn.to/49PsnJM- Memoria RAM: CORSAIR VENGEANCE RGB PRO DDR4 - https://amzn.to/49VwWCj- Fuente de alimentación: Aerocool MIRAGEGOLD 750W - https://amzn.to/49NYxp9- Refrigeración: UNYKAch Refrigeración Líquida CPU - https://amzn.to/4fCy5js- Caja gaming: Mars Gaming MC-mag ATX - https://amzn.to/3DqiaHw- Fundas ARGB: FUNDAS ARGB MARS GAMING PARA TUBOS DE REFRIGERACIÓN - -https://amzn.to/3ZPG8Un- Ratón gaming: SteelSeries Aerox 3 Wireless - https://amzn.to/3VVg2hA- Teclado gaming: SteelSeries Apex Pro TKL Wireless - https://amzn.to/41OkzWL8️⃣ VALORACIÓN💻 Monté este PC pensando en el Fortnite del niño, y la verdad es que va de maravilla. La CPU y la gráfica trabajan a un  60% de uso, con un rendimiento fluido y sin cuellos de botella. Además, las temperaturas se mantienen bajo control, con el procesador rondando los 65 ºC en plena acción.⚙️ Este modelo de procesador sigue siendo una apuesta segura para gaming y multitarea. Su configuración de 8 núcleos y 16 hilos ofrece una experiencia muy equilibrada, incluso para títulos exigentes. Lo más destacable es su capacidad para mantener una alta frecuencia sin penalizar la eficiencia energética, aunque bajo carga máxima requiere un sistema de refrigeración competente.Lo que mucha gente no sabe, es que este modelo de Ryzen no viene con gráficos integrados en el procesador, por lo que si lo montas sin tarjeta gráfica, no tendrás salida de vídeo por tu placa base. Para ello vas a necesitar comprar una tarjeta gráfica dedicada. Si quieres un procesador con gráficos integrados, son los que terminan en G, como éste: https://amzn.to/4gqHoU3🛠️ A pesar de no ser de última generación, su relación calidad-precio lo hace destacar frente a opciones más recientes. El montaje del PC fue sencillo con los componentes que elegí, y hasta ahora, todo ha funcionado como esperaba. Lo más importante: no hay caídas de rendimiento ni problemas de compatibilidad.Personalmente, resulta más seguro montar procesadores AMD que Intel. Las diferencias entre ellos, es que lo intel, los procesadores son planos y el socket tiene los pines, pero es muy fácil que se doblen los pines. En el AMD, los pines están en el procesador y salvo que te caiga, no vas a tener problemas por montar y desmontar sin dañar las patillas. Me dan mayor seguridad.✅ CONCLUSIÓNAunque lanzado en 2020, sigue siendo una opción actual y eficiente, perfectamente válido para gaming sin comprometer temperaturas ni rendimiento.👍 RECOMENDABLE.✳️ Espero que mi comentario ✍️ te haya podido servir de ayuda 😃Read more",
+        "verified_purchase": false,
+        "helpful_votes": 0
+      }
+    ],
+    "analysis": {
+      "average_rating": 5.0,
+      "total_reviews": 7,
+      "rating_counts": {
+        "1_star": 0,
+        "2_star": 0,
+        "3_star": 0,
+        "4_star": 0,
+        "5_star": 7
+      },
+      "verified_count": 0,
+      "verified_percentage": 0.0,
+      "top_positive_reviews": [
+        {
+          "reviewer_name": "Noah Clark",
+          "title": "5.0 out of 5 starsplease read the first paragraph at least!!",
+          "rating": 5.0,
+          "date": "Reviewed in the United States on November 29, 2023",
+          "text": "so, i was one of the (statistically few) who hit the silicon lottery and struck dirt. basically, my 5800x was defective. this is just a PSA, if you encounter BSODs/crashes to reboot/fatal hardware errors after installing your new CPU, it is likely defective. i was getting WHEA_UNCORRECTABLE_ERROR at random times, event IDs WHEA-18 and 46. no combination of the CPU with a new motherboard, different ram, 1 stick of ram, XMP profiles off, PBO disabled, bios updates, windows reinstalls, chipset driver updates, or other device driver updates resolved the issue for me. it would occur under any load at any temperature. it's also worth mentioning that it worked fine for about 5 days before issues started to happen. if your PC is producing errors you simply cannot resolve and it started with the new CPU, please return it ASAP!! i have ordered a new one already and shipped the defective unit back. i used my old ryzen 2600 to isolate the 5800x as the issue, and my system runs completely stable as long as i keep it on. i'm sad it was defective, but ultimately, i'm not going to let it damage my opinion of the CPU, as defective products are guaranteed to slip through here and there, and amazon is extremely good about their return policy in my experience.anyway, with that out of the way, let's talk about the CPU itself. when mine was functioning normally, it was awesome. coming from an old ryzen 5 2600, the performance gain of the 5800x is a night and day difference. it's 3 years old now, but its price and still-relevant performance make it an immensely good value. it squeezed new fps gains out of my gtx 1080, and was far more than enough for my new rtx 4070. the gains in performance are even more obvious now that i'm back on the 2600 while i wait for my replacement to arrive. it was as easy to install as any other AM3/AM4 CPU. i will give a heads up however that it does run hot and is known to do so. however, AMD has explicitly stated that even 90°C is safe at full load. a high quality air cooler will be enough if you don't plan on doing serious overclocking, like me. a thermalright peerless assassin or scythe fuma should be more than enough for stock clocks with PBO left on auto. i paired this with 32gb of gskill ripjaws V with 3600mhz XMP profile, and the two paired wonderfully. the motherboard i ended up with is an MSI MAG B550 tomahawk max wifi, but the CPU will work just fine on most B450/X470 motherboards as long as your bios is up to date!!!! please do not let my disclaimer dissuade you from buying this amazing CPU, it can happen to anyone who buys any CPU, from Intel too! i can't wait for my replacement to arrive and complete my system, i wholeheartedly recommend this CPU for great performance per dollar.Read more",
+          "verified_purchase": false,
+          "helpful_votes": 0
+        },
+        {
+          "reviewer_name": "Darkoasis",
+          "title": "5.0 out of 5 starsAmazing CPU for Gaming!",
+          "rating": 5.0,
+          "date": "Reviewed in the United States on January 17, 2022",
+          "text": "I have had this CPU for around exactly one year now. Normally I do all my tech reviews fairly early but I wanted to really use this chip, overclock it, game, and do lighting editing as well. To start off my full system is a Ryzen 5800X, Asus X570-Pro board, 32GB of 3600mhz G.Skill CL16 memory (4x8GB), EVGA G3 Supernova 850 watt 80+ Gold PSU, EVGA RTX 2070 Super GPU, Cooler Master NR600 Case, Noctua NH-D15 Chromax Black Edition CPU cooler. I have two Gen 4 NVMe drives and 4 normal sata SSD drives. My case is filled with all Cooler Master Masterpro ARGB high CFM airflow fans. I’m also using an internal wireless card as well as my particular x570 board doesn’t come with onboard WiFi. My reason for stating all this is the airflow and cooling in my case is exceptional. I have one of the highest airflow cases, with some of the best fans, one of the best CPU coolers, and I’m using Thermal Grizzly Kryonaunt paste which is hands down the best CPU test for overclocking and temps in general imo. Stating all this because YOUR temps may be different than mine as well as your results. To start of with the chip I’ve not had ONE single issue with it so far after a year of use. ALL I have done to it after installing it in place of the Ryzen 3600 that it replaced was I enabled DOCP on my memory which is AMDs version of XMP and I enabled PBO on my chip with the max limit set at 200mhz. That it all I touched. This chip boosts to 5.1ghz when using 2-3 cores or less easily and even if under full load will still stay around 4.75ghz on all 8 cores at 100% load. In a more realistic load like gaming it runs around 4.75-4.95ghz. Under full load like Prime95 my temps top out around 74C. Idle is around low 30s and while gaming it bounces around 55-65C. It runs super fast and super cool. This is all on air cooling too. When going from the 3600 to the 5800X while every single other aspect of my system remained the same I gained anywhere from 10 fps to over 20 fps on some games. I play at 1440P as well. If you play at 1080P your results will be even better. This is the best chip I’ve ever used and owned. My RTX 2070 Super is overclocked 1100mhz on the memory and 140mhz on the core. On benchmarks my scores beat all stock and even factory OC 2080 Supers. They also beat almost all RTX 3060 ti results as well. I’ve never played a single game where this chip bottlenecks my card ever. Whereas with the 3600 it did from time to time. Especially in games using DLSS which renders the game at a much lower resolution then upscales it. That makes the game way more CPU demanding and in titles with DLSS my fps increase was huge. Absolutely amazing cpu for gaming and you don’t have to do anything other than enable PBO. Gone are the days of manual overclocking to get all the performance you paid for. The chips auto boost themselfs as high as they can go basically all by themselves now. If you have any Zen + or Zen 2 chip and wanna upgrade to Zen 3 aka Ryzen 5000 I say it’s well worth it for gaming. The IPC increase on Ryzen 5000 over 3000 series is huge. Over 30% faster. I’ve included pictures of my setup, CPUz info, benchmark results, MSI Afterburner temperature info after playing Witcher 3 at 1440P on Ultra settings for hours, and many other others. The chip boosts high, runs cool, requires basically no knowledge to get max performance from it outside of TWO toggles in the bios, and at its current price is an amazing value imo. Fast enough to pair any GPU on the market with it if you can find one. I’ve been wanting a 3080 forever now but just no luck. I paid the MSRP of 450 for this chip and don’t regret it at all. No crashes, no issues ever, never breaks 70C while daily use/gaming no matter how long, boosts over 5ghz, and has enough cores/threads if you wanna stream and multitask while gaming you’re good to go. I think AMD did an amazing job with Zen 3 and if you’re interested in the 5800X for gaming/streaming you won’t go wrong. Hope this review helped and if it does please leave a like. Enjoy the pics and thanks for reading.Read more",
+          "verified_purchase": false,
+          "helpful_votes": 0
+        },
+        {
+          "reviewer_name": "MiguiOceano",
+          "title": "SIN GRÁFICOS INTEGRADOS",
+          "rating": 5.0,
+          "date": "Reviewed in Spain on March 17, 2025",
+          "text": "The media could not be loaded.📝 DESCRIPCIÓNProcesador de alto rendimiento lanzado en 2020, ideal para juegos y tareas multitarea avanzadas.Procesador actual de AMD en Amazon: https://amzn.to/4iHsMlw🧾 ESPECIFICACIONES- Núcleos: 8, hilos: 16.- Velocidad base: 3,8 GHz, turbo: hasta 4,7 GHz.- Caché L2: 4 MB, L3: 32 MB.- Consumo: 105 W.- Socket: AM4.- Memoria: DDR4 hasta 3200 MHz.- Lanzamiento: Q4/2020.📦 CONTENIDO- Procesador Ryzen 7 5800X.- Guía de instalación.💶 PRECIO- 30 de Noviembre de 2024: 158,80 €.🟢 PROS• Gran rendimiento en juegos y multitarea.• Configuración 8 núcleos / 16 hilos para tareas exigentes.• Compatible con Windows y Linux.• Eficiente en consumo energético.🔴 CONTRAS• No tiene gráficos integrados. Requiere una tarjeta gráfica.• Calor bajo carga extrema, requiere refrigeración de calidad.• No incluye disipador.• Modelo de 2020, no es la última generación (Ryzen 7 9700X lanzado en Q3/2024).🎛️ MONTAJE DE MI PC- Placa base: MSI Placa base MPG B550 Gaming Plus - https://amzn.to/4gO0mo7- Gráfica: Gigabyte NVIDIA GeForce RTX 3060 GAMING - https://amzn.to/49PsnJM- Memoria RAM: CORSAIR VENGEANCE RGB PRO DDR4 - https://amzn.to/49VwWCj- Fuente de alimentación: Aerocool MIRAGEGOLD 750W - https://amzn.to/49NYxp9- Refrigeración: UNYKAch Refrigeración Líquida CPU - https://amzn.to/4fCy5js- Caja gaming: Mars Gaming MC-mag ATX - https://amzn.to/3DqiaHw- Fundas ARGB: FUNDAS ARGB MARS GAMING PARA TUBOS DE REFRIGERACIÓN - -https://amzn.to/3ZPG8Un- Ratón gaming: SteelSeries Aerox 3 Wireless - https://amzn.to/3VVg2hA- Teclado gaming: SteelSeries Apex Pro TKL Wireless - https://amzn.to/41OkzWL8️⃣ VALORACIÓN💻 Monté este PC pensando en el Fortnite del niño, y la verdad es que va de maravilla. La CPU y la gráfica trabajan a un  60% de uso, con un rendimiento fluido y sin cuellos de botella. Además, las temperaturas se mantienen bajo control, con el procesador rondando los 65 ºC en plena acción.⚙️ Este modelo de procesador sigue siendo una apuesta segura para gaming y multitarea. Su configuración de 8 núcleos y 16 hilos ofrece una experiencia muy equilibrada, incluso para títulos exigentes. Lo más destacable es su capacidad para mantener una alta frecuencia sin penalizar la eficiencia energética, aunque bajo carga máxima requiere un sistema de refrigeración competente.Lo que mucha gente no sabe, es que este modelo de Ryzen no viene con gráficos integrados en el procesador, por lo que si lo montas sin tarjeta gráfica, no tendrás salida de vídeo por tu placa base. Para ello vas a necesitar comprar una tarjeta gráfica dedicada. Si quieres un procesador con gráficos integrados, son los que terminan en G, como éste: https://amzn.to/4gqHoU3🛠️ A pesar de no ser de última generación, su relación calidad-precio lo hace destacar frente a opciones más recientes. El montaje del PC fue sencillo con los componentes que elegí, y hasta ahora, todo ha funcionado como esperaba. Lo más importante: no hay caídas de rendimiento ni problemas de compatibilidad.Personalmente, resulta más seguro montar procesadores AMD que Intel. Las diferencias entre ellos, es que lo intel, los procesadores son planos y el socket tiene los pines, pero es muy fácil que se doblen los pines. En el AMD, los pines están en el procesador y salvo que te caiga, no vas a tener problemas por montar y desmontar sin dañar las patillas. Me dan mayor seguridad.✅ CONCLUSIÓNAunque lanzado en 2020, sigue siendo una opción actual y eficiente, perfectamente válido para gaming sin comprometer temperaturas ni rendimiento.👍 RECOMENDABLE.✳️ Espero que mi comentario ✍️ te haya podido servir de ayuda 😃Read more",
+          "verified_purchase": false,
+          "helpful_votes": 0
+        },
+        {
+          "reviewer_name": "Irving",
+          "title": "Buen producto pero hay que tomar consideraciones",
+          "rating": 5.0,
+          "date": "Reviewed in Mexico on August 13, 2024",
+          "text": "El producto es muy bueno. Es un procesador que por sus características permite sacar el máximo provecho a juegos (razón por la que yo lo compré). Actualmente tengo mi computadora junto con una rtx 3060 y me parece que el rendimiento es óptimo y de mucha calidad.Mi computadora tiene una refrigeración bastante buena creo yo, por lo que no me preocupa medir las temperaturas. Además, tampoco soy el tipo de usuario que se dedica a ver estadísticas para ver cuánto rendimiento están dando los programas que ejecuto. Lo más que hago es usar la aplicación de Nvidia y ver los porcentajes que me brinda. Mi experiencia de juego es buena y eso es suficiente para mí. Tengo claro que para aprovechar al máximo este procesador es importante la refrigeración que se le pueda dar, por lo que las recomendaciones que yo daría para comprar este procesador son dos:-- En verdad considera la refrigeración y el espacio de tu gabinete, serán de mucha ayuda para que permita al procesador trabajar con libertad.-- Los componentes que acompañan al procesador deben ser acorde a la calidad de este. No me refiero al precio o marca, más bien al rendimiento que deben dar para no causar un cuello de botella excesivo.Read more",
+          "verified_purchase": false,
+          "helpful_votes": 0
+        },
+        {
+          "reviewer_name": "Francesco",
+          "title": "Prestazioni top nel 2025: Ryzen 5800X ancora validissimo!",
+          "rating": 5.0,
+          "date": "Reviewed in Italy on March 29, 2025",
+          "text": "⭐️⭐️⭐️⭐️⭐️ (5 su 5)Dopo anni con un Ryzen 5 2600X, sono passato a questo 5800X e il salto di prestazioni si nota eccome. È un processore di fascia alta per la piattaforma AM4, ideale sia per il gaming che per il lavoro pesante, e dopo più di un mese di utilizzo sono pienamente soddisfatto.✅ Pro:Prestazioni eccellenti: Gli 8 core e 16 thread offrono una potenza davvero notevole. In gaming spinge al massimo la mia RTX 3060, e in produttività (editing, multitasking, compiti pesanti) non si scompone mai.Compatibilità AM4: Uno dei punti forti di AMD è la longevità della piattaforma. L’ho montato su una B550 senza alcun problema, BIOS già aggiornato.Temperature sotto controllo (con buon dissipatore): Con un dissipatore aftermarket (Noctua NH-U12S Redux), le temperature restano sui 35-40°C in idle e 70-75°C sotto stress. Occhio: non ha dissipatore incluso, ma lo sapevo prima dell’acquisto.Rapporto prezzo/prestazioni ottimo nel 2025: Acquistato a 186€, rappresenta un best buy considerando quanto offre. Super competitivo.❌ Contro:Scalda parecchio con dissipatori stock (che però non sono inclusi): È noto per essere uno dei Ryzen più caldi della serie 5000. Se usi un raffreddamento economico o inadatto, le temperature possono impennarsi.Consumi più alti rispetto ad altri Ryzen 5000: Nulla di eccessivo, ma si fa notare sotto carico rispetto ad esempio al 5700X.Il Ryzen 7 5800X è una scelta eccellente se cerchi un processore potente per AM4. Ancora nel 2025, regge perfettamente ogni tipo di carico. Serve solo abbinarlo a un buon dissipatore e sei a posto per anni. Nessun problema di compatibilità, prestazioni super, e prezzo ormai molto accessibile.Voto finale: 5/5Read more",
+          "verified_purchase": false,
+          "helpful_votes": 0
+        }
+      ],
+      "top_negative_reviews": []
+    }
+  },
+  "ai_summary": {
+    "summary": "Customers are highly satisfied with this product, giving it an average rating of 5.0 stars. 0% of reviews are from verified purchases. Users frequently mention out, starsamazing, cpu in their reviews. The product appears to meet or exceed expectations in terms of quality and functionality.",
+    "key_points": [
+      "Functionality meets expectations according to most users.",
+      "Ease of use is a common theme.",
+      "Product appearance and design are highlighted."
+    ],
+    "pros": [
+      "Attractive design",
+      "Fast shipping",
+      "Good size/dimensions",
+      "Durable construction"
+    ],
+    "cons": [
+      "Shipping delays noted"
+    ],
+    "sentiment": "positive"
+  },
+  "similar_products": [
+    {
+      "title": "GMKtec Gaming Mini PC K8 Plus AMD Ryzen 7 8845HS(8C/16T, up to 5.1GHz) 32GB DDR5 RAM 1TB SSD, Desktop Computer Dual NIC 2.5G, HDMI 2.1, USB4",
+      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTo4MzM5MTAxMjAyNzMwMTQ3OjE3NDY1NTYzMTg6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDQ4NDY4NjM3NjgwMjo6Ojo&url=%2Fdp%2FB0DHNTW3H6%2Fref%3Dsspa_dk_detail_0%3Fpsc%3D1%26pd_rd_i%3DB0DHNTW3H6%26pd_rd_w%3D9nxDe%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3D0YBK4F1WZMXHVW86YG6S%26pd_rd_wg%3DJO0c7%26pd_rd_r%3D8a9d70c3-e155-4594-bd49-5b8b7a368914%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
+      "image_url": "https://m.media-amazon.com/images/I/61aWsUZNhKL._AC_UF480,480_SR480,480_.jpg",
+      "price": "-27%$549.99$549.99List Price:$749.99$749.99"
+    },
+    {
+      "title": "AMD Ryzen 5 3600 6-core, 12-Thread Unlocked Desktop Processor with Wraith Spire Cooler",
+      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTo4MzM5MTAxMjAyNzMwMTQ3OjE3NDY1NTYzMTg6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDY4MTcxMDU5NzYwMjo6Ojo&url=%2Fdp%2FB0BL92CBWG%2Fref%3Dsspa_dk_detail_1%3Fpsc%3D1%26pd_rd_i%3DB0BL92CBWG%26pd_rd_w%3D9nxDe%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3D0YBK4F1WZMXHVW86YG6S%26pd_rd_wg%3DJO0c7%26pd_rd_r%3D8a9d70c3-e155-4594-bd49-5b8b7a368914%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
+      "image_url": "https://m.media-amazon.com/images/I/71Vsm4ohvML._AC_UF480,480_SR480,480_.jpg",
+      "price": "-7%$83.62$83.62Typical:$89.99$89.99"
+    },
+    {
+      "title": "Mini PC AD78 AMD Ryzen 7 7840HS, 8 Cores/16 Threads 32GB DDR5&5600MHz 1TB SSD 4.0 Mini Desktop PC, Quad Screen Display(HDMI2.1 ×2, USB4 ×2, AMD Radeon 780M,4xUSB3.2, RJ45 2.5 G LAN,WiFi 6E&BT5.3",
+      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTo4MzM5MTAxMjAyNzMwMTQ3OjE3NDY1NTYzMTg6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDcxMzIxOTQ5OTQwMjo6Ojo&url=%2Fdp%2FB0CNPZQT96%2Fref%3Dsspa_dk_detail_2%3Fpsc%3D1%26pd_rd_i%3DB0CNPZQT96%26pd_rd_w%3D9nxDe%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3D0YBK4F1WZMXHVW86YG6S%26pd_rd_wg%3DJO0c7%26pd_rd_r%3D8a9d70c3-e155-4594-bd49-5b8b7a368914%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
+      "image_url": "https://m.media-amazon.com/images/I/61yQy71nKdL._AC_UF480,480_SR480,480_.jpg",
+      "price": "$459.00$459.00"
+    },
+    {
+      "title": "GMKtec Mini PC Gaming, K6 AMD Ryzen 7 7840HS Dual NIC LAN 2.5Gbps Desktop Computer, 32GB DDR5 (16GB*2) 1TB PCIe4.0 SSD, USB4.0, HDMI, DP, USB-C, WiFi 6E, BT 5.2",
+      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTo4MzM5MTAxMjAyNzMwMTQ3OjE3NDY1NTYzMTg6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDI3ODkwNDc0OTQwMjo6Ojo&url=%2Fdp%2FB0CQ4WBV8L%2Fref%3Dsspa_dk_detail_3%3Fpsc%3D1%26pd_rd_i%3DB0CQ4WBV8L%26pd_rd_w%3D9nxDe%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3D0YBK4F1WZMXHVW86YG6S%26pd_rd_wg%3DJO0c7%26pd_rd_r%3D8a9d70c3-e155-4594-bd49-5b8b7a368914%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
+      "image_url": "https://m.media-amazon.com/images/I/71tpOc+TCmL._AC_UF480,480_SR480,480_.jpg",
+      "price": "-25%$479.99$479.99List Price:$639.99$639.99"
+    },
+    {
+      "title": "Alloy 9 Mini Gaming PC AMD Ryzen 9 7940HS 32GB DDR5 1TB SSD 5600 MHz RAM, Desktop M...",
+      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTo4MzM5MTAxMjAyNzMwMTQ3OjE3NDY1NTYzMTg6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDQwNjkyNDQ4NzYwMjo6Ojo&url=%2Fdp%2FB0CM6KHGN7%2Fref%3Dsspa_dk_detail_4%3Fpsc%3D1%26pd_rd_i%3DB0CM6KHGN7%26pd_rd_w%3D9nxDe%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3D0YBK4F1WZMXHVW86YG6S%26pd_rd_wg%3DJO0c7%26pd_rd_r%3D8a9d70c3-e155-4594-bd49-5b8b7a368914%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
+      "image_url": "https://m.media-amazon.com/images/I/61J8t5gCLuL._AC_UF480,480_SR480,480_.jpg",
+      "price": "$709.00$709.00"
+    },
+    {
+      "title": "GMKtec Mini PC AMD Ryzen 7 5825U (Turbo 4.5GHz) Dual NIC 2.5G Gaming Desktop Computers 16GB DDR4 512GB SSD Dual LAN 2.5G/ WiFi 6E, USB3.2, USB-C, BT 5.2, DP, HDMI, Dual Fan",
+      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTo4MzM5MTAxMjAyNzMwMTQ3OjE3NDY1NTYzMTg6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDE1NzUxODIxNzEwMjo6Ojo&url=%2Fdp%2FB0CWXYK4TZ%2Fref%3Dsspa_dk_detail_5%3Fpsc%3D1%26pd_rd_i%3DB0CWXYK4TZ%26pd_rd_w%3D9nxDe%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3D0YBK4F1WZMXHVW86YG6S%26pd_rd_wg%3DJO0c7%26pd_rd_r%3D8a9d70c3-e155-4594-bd49-5b8b7a368914%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
+      "image_url": "https://m.media-amazon.com/images/I/61ZhbZ3s38L._AC_UF480,480_SR480,480_.jpg",
+      "price": "$349.99$349.99"
+    },
+    {
+      "title": "P4 Plus Mini PC Desktop Computers, AMD Ryzen 7 5825U, 32GB DDR4, 1TB SSD, Win 11 Pr...",
+      "url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MTo4MzM5MTAxMjAyNzMwMTQ3OjE3NDY1NTYzMTg6c3BfZGV0YWlsX3RoZW1hdGljOjMwMDY1MzM4MTU5NjMwMjo6Ojo&url=%2Fdp%2FB0DBYB71GJ%2Fref%3Dsspa_dk_detail_6%3Fpsc%3D1%26pd_rd_i%3DB0DBYB71GJ%26pd_rd_w%3D9nxDe%26content-id%3Damzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_p%3D386c274b-4bfe-4421-9052-a1a56db557ab%26pf_rd_r%3D0YBK4F1WZMXHVW86YG6S%26pd_rd_wg%3DJO0c7%26pd_rd_r%3D8a9d70c3-e155-4594-bd49-5b8b7a368914%26s%3Dpc%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM",
+      "image_url": "https://m.media-amazon.com/images/I/71LubiByC3L._AC_UF480,480_SR480,480_.jpg",
+      "price": "$399.99$399.99"
+    }
+  ]
+}

@@ -12,13 +12,22 @@ from scripts.python.ai_summarizer import ReviewSummarizer, summarize_reviews
 def setup_logging(verbose: bool = False) -> None:
     """Configure logging for the application."""
     log_level = logging.DEBUG if verbose else logging.INFO
-    logging.basicConfig(
-        level=log_level,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.StreamHandler(sys.stdout)
-        ]
-    )
+    # Ensure the stream handler uses UTF-8 encoding
+    handler = logging.StreamHandler(sys.stdout.buffer.write if hasattr(sys.stdout, 'buffer') else sys.stdout)
+    handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+    
+    # Get the root logger and remove existing handlers
+    root_logger = logging.getLogger()
+    if root_logger.hasHandlers():
+        root_logger.handlers.clear()
+        
+    root_logger.addHandler(handler)
+    root_logger.setLevel(log_level)
+
+    # Also configure encoding for individual loggers if necessary, though root should cover it.
+    logging.getLogger('scripts.python.scraper').setLevel(log_level)
+    logging.getLogger('scripts.python.review_analyzer').setLevel(log_level)
+    logging.getLogger('scripts.python.ai_summarizer').setLevel(log_level)
 
 def extract_product_details(url: str) -> Dict[str, Any]:
     """Extract product description, specifications, image URL, and price."""
@@ -56,117 +65,162 @@ def save_results_to_json(data: Dict[str, Any], output_file: str) -> None:
     
     logging.info(f"Results saved to {output_file}")
 
+def safe_print(text: Any, end: str = '\n') -> None:
+    """Safely print text to stdout, encoding to UTF-8 and handling errors."""
+    try:
+        # Ensure text is a string
+        if not isinstance(text, str):
+            text = str(text)
+        
+        # Encode to UTF-8 and decode back to handle potential errors in the string itself
+        # Replace errors during encoding to prevent crashes
+        encoded_text = text.encode('utf-8', errors='replace').decode('utf-8', errors='replace')
+        
+        if hasattr(sys.stdout, 'buffer'):
+            sys.stdout.buffer.write(encoded_text.encode('utf-8') + end.encode('utf-8'))
+            sys.stdout.flush() # Ensure it's written immediately
+        else:
+            # Fallback for environments without sys.stdout.buffer (less likely for Node.js child process)
+            print(encoded_text, end=end)
+            sys.stdout.flush()
+
+    except Exception as e:
+        # Fallback: print a representation or a placeholder if encoding fails
+        try:
+            print(repr(text) + " (print error: " + str(e) + ")", end=end)
+            sys.stdout.flush()
+        except:
+            # Ultimate fallback
+            print(f"[Unprintable text - Error: {e}]", end=end)
+            sys.stdout.flush()
+
 def print_summary(data: Dict[str, Any]) -> None:
     """Print a summary of the analysis results to the console."""
-    print("\n" + "="*80)
-    print("AMAZON PRODUCT SUMMARY")
-    print("="*80)
+    safe_print("\n" + "="*80)
+    safe_print("AMAZON PRODUCT SUMMARY")
+    safe_print("="*80)
     
     # Product information
     if "product_details" in data:
         specs = data["product_details"].get("specifications", {})
-        print(f"\nProduct: {specs.get('Brand', '')} {specs.get('Title', '')}")
-        print(f"ASIN: {specs.get('ASIN', 'Unknown')}")
+        product_brand = specs.get('Brand', '')
+        product_title_spec = specs.get('Title', '') # Assuming 'Title' might be in specs
+        
+        # Attempt to get a more descriptive title if 'Title' spec is empty
+        product_name_display = f"{product_brand} {product_title_spec}".strip()
+        if not product_name_display and data["product_details"].get("description"):
+            # Fallback to first part of description if available
+            desc_parts = data["product_details"]["description"].split('.')[0]
+            product_name_display = desc_parts.split('-')[0].strip()
+            if len(product_name_display) > 70: # Keep it concise
+                 product_name_display = product_name_display[:67] + "..."
+        elif not product_name_display:
+            product_name_display = "N/A"
+
+        safe_print(f"\nProduct: {product_name_display}")
+        safe_print(f"ASIN: {specs.get('ASIN', 'Unknown')}")
         
         # Print price if available
         if data["product_details"].get("price"):
-            print(f"Price: {data['product_details']['price']}")
+            safe_print(f"Price: {data['product_details']['price']}")
         
         # Print image URL if available
         if data["product_details"].get("image_url"):
-            print(f"Image URL: {data['product_details']['image_url']}")
+            safe_print(f"Image URL: {data['product_details']['image_url']}")
         
         # Print a few key specifications
         important_specs = ["Brand", "Capacity", "Material", "Color", "Product Dimensions", "Item Weight"]
-        print("\nSpecifications:")
-        for spec in important_specs:
-            if spec in specs:
-                print(f"  {spec}: {specs[spec]}")
-    
+        safe_print("\nSpecifications:")
+        found_any_specs = False
+        for spec_name in important_specs:
+            if spec_name in specs and specs[spec_name] is not None: # Check if spec exists and is not None
+                safe_print(f"  {spec_name}: {specs[spec_name]}")
+                found_any_specs = True
+        if not found_any_specs:
+            safe_print("  No key specifications listed.")
+
     # Review analysis
     if "review_data" in data and "analysis" in data["review_data"]:
         analysis = data["review_data"]["analysis"]
-        print(f"\nTotal Reviews: {analysis.get('total_reviews', 0)}")
-        print(f"Average Rating: {analysis.get('average_rating', 0)} stars")
+        safe_print(f"\nTotal Reviews: {analysis.get('total_reviews', 0)}")
+        safe_print(f"Average Rating: {analysis.get('average_rating', 0)} stars")
         
         # Rating distribution
         if "rating_counts" in analysis:
-            print("\nRating Distribution:")
+            safe_print("\nRating Distribution:")
             for star, count in analysis["rating_counts"].items():
-                print(f"  {star}: {count} reviews")
+                safe_print(f"  {star}: {count} reviews")
         
         # Top positive reviews
         if "top_positive_reviews" in analysis and analysis["top_positive_reviews"]:
-            print("\n" + "-"*80)
-            print("TOP POSITIVE REVIEWS")
-            print("-"*80)
+            safe_print("\n" + "-"*80)
+            safe_print("TOP POSITIVE REVIEWS")
+            safe_print("-"*80)
             for i, review in enumerate(analysis["top_positive_reviews"], 1):
-                print(f"{i}. {review['title']} - {review['rating']} stars")
-                print(f"   By: {review.get('reviewer_name', 'Anonymous')} | Date: {review.get('date', 'Unknown')}")
-                print(f"   Verified Purchase: {'Yes' if review.get('verified_purchase') else 'No'} | Helpful Votes: {review.get('helpful_votes', 0)}")
+                safe_print(f"{i}. {review.get('title', 'N/A')} - {review.get('rating', 'N/A')} stars")
+                safe_print(f"   By: {review.get('reviewer_name', 'Anonymous')} | Date: {review.get('date', 'Unknown')}")
+                safe_print(f"   Verified Purchase: {'Yes' if review.get('verified_purchase') else 'No'} | Helpful Votes: {review.get('helpful_votes', 0)}")
                 
-                # Truncate long review texts
-                text = review['text']
+                text = review.get('text', '')
                 if len(text) > 150:
                     text = text[:150] + "..."
-                print(f"   {text}")
-                print()
+                safe_print(f"   {text}")
+                safe_print("") # Empty line for spacing
         
         # Top negative reviews
         if "top_negative_reviews" in analysis and analysis["top_negative_reviews"]:
-            print("\n" + "-"*80)
-            print("TOP NEGATIVE REVIEWS")
-            print("-"*80)
+            safe_print("\n" + "-"*80)
+            safe_print("TOP NEGATIVE REVIEWS")
+            safe_print("-"*80)
             for i, review in enumerate(analysis["top_negative_reviews"], 1):
-                print(f"{i}. {review['title']} - {review['rating']} stars")
-                print(f"   By: {review.get('reviewer_name', 'Anonymous')} | Date: {review.get('date', 'Unknown')}")
-                print(f"   Verified Purchase: {'Yes' if review.get('verified_purchase') else 'No'} | Helpful Votes: {review.get('helpful_votes', 0)}")
+                safe_print(f"{i}. {review.get('title', 'N/A')} - {review.get('rating', 'N/A')} stars")
+                safe_print(f"   By: {review.get('reviewer_name', 'Anonymous')} | Date: {review.get('date', 'Unknown')}")
+                safe_print(f"   Verified Purchase: {'Yes' if review.get('verified_purchase') else 'No'} | Helpful Votes: {review.get('helpful_votes', 0)}")
                 
-                # Truncate long review texts
-                text = review['text']
+                text = review.get('text', '')
                 if len(text) > 150:
                     text = text[:150] + "..."
-                print(f"   {text}")
-                print()
+                safe_print(f"   {text}")
+                safe_print("") # Empty line for spacing
     
     # AI summary
     if "ai_summary" in data:
         summary = data["ai_summary"]
-        print("\n" + "-"*80)
-        print("AI-GENERATED REVIEW SUMMARY")
-        print("-"*80)
-        print(f"\n{summary.get('summary', 'No summary available.')}")
+        safe_print("\n" + "-"*80)
+        safe_print("AI-GENERATED REVIEW SUMMARY")
+        safe_print("-"*80)
+        safe_print(f"\n{summary.get('summary', 'No summary available.')}")
         
         # Key points
         if "key_points" in summary and summary["key_points"]:
-            print("\nKey Points:")
+            safe_print("\nKey Points:")
             for point in summary["key_points"]:
-                print(f"• {point}")
+                safe_print(f"• {point}")
         
         # Pros and cons
         if "pros" in summary and summary["pros"]:
-            print("\nPros:")
+            safe_print("\nPros:")
             for pro in summary["pros"]:
-                print(f"✓ {pro}")
+                safe_print(f"✓ {pro}")
         
         if "cons" in summary and summary["cons"]:
-            print("\nCons:")
+            safe_print("\nCons:")
             for con in summary["cons"]:
-                print(f"✗ {con}")
+                safe_print(f"✗ {con}")
     
     # Similar products
     if "similar_products" in data and data["similar_products"]:
-        print("\n" + "-"*80)
-        print("SIMILAR PRODUCTS")
-        print("-"*80)
-        for i, product in enumerate(data["similar_products"][:5], 1):
-            print(f"{i}. {product.get('title', 'Unknown')}")
-            print(f"   URL: {product.get('url', '')}")
-            if product.get('price_text'):
-                print(f"   Price: {product['price_text']}")
-            print()
+        safe_print("\n" + "-"*80)
+        safe_print("SIMILAR PRODUCTS")
+        safe_print("-"*80)
+        for i, product in enumerate(data["similar_products"][:5], 1): # Limit to top 5
+            safe_print(f"{i}. {product.get('title', 'Unknown')}")
+            safe_print(f"   URL: {product.get('url', '')}")
+            if product.get('price'): # Changed from 'price_text' to 'price' based on review.json
+                safe_print(f"   Price: {product['price']}")
+            safe_print("") # Empty line for spacing
     
-    print("="*80)
+    safe_print("="*80)
 
 def process_product(url: str, output_file: Optional[str] = None, 
                    max_review_pages: int = 3, api_key: Optional[str] = None,

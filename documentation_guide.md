@@ -142,6 +142,8 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 - **`fetch_page(url)`** - Retrieves HTML content with error handling
 - **`extract_product_description(html_content)`** - Parses product descriptions
 - **`extract_tech_specs(html_content)`** - Extracts technical specifications
+- **`_extract_from_tables(soup)`** - Extracts specifications from tables with validation to prevent duplicate values
+- **`_extract_from_bullets(soup)`** - Extracts specifications from bullet lists with validation checks
 - **`extract_product_image(html_content)`** - Extracts product display image URL
 - **`extract_product_price(html_content)`** - Extracts product price
 - **`scrape_product(url)`** - Main orchestration method
@@ -175,6 +177,17 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 **Utility Functions**
 - **`summarize_reviews(reviews, api_key)`** - Quick summary generation
 
+#### [`scripts/python/deepseek_api.py`](scripts/python/deepseek_api.py) - DeepSeek AI integration
+*Handles DeepSeek AI API integration for advanced product analysis*
+
+**`DeepSeekAnalyzer`** - Processes review data through DeepSeek AI
+- **`__init__(api_key)`** - Initializes with the API key (directly in the script)
+- **`load_review_data(filepath)`** - Loads product data from review.json
+- **`generate_prompt(data)`** - Creates a structured prompt for the AI
+- **`get_deepseek_analysis(prompt)`** - Calls the DeepSeek API with the prompt
+- **`clean_markdown_formatting(response)`** - Cleans markdown formatting from API responses
+- **`save_response(response, output_path)`** - Saves the AI analysis to response.json
+
 ### 🔸 Frontend Components
 
 #### [`pages/index.html`](pages/index.html) - Main application interface
@@ -193,7 +206,10 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 - **Review Highlights** - Displays AI-generated summary with pros and cons
 - **Top Reviews** - Shows the top 3 user reviews with metadata
 - **Similar Products** - Displays alternative product options if available
-- **Error Handling** - Dedicated error display with CORS troubleshooting
+- **Error Handling** - Dedicated error displays for CORS issues and Amazon scraping failures
+- **DeepSeek Analysis** - Shows AI-generated insights directly after the product card
+- **Ad Containers** - Responsive ad sections (left, right, bottom)
+- **Theme Toggle** - Button to switch between light and dark themes
 
 #### [`styles/main.css`](styles/main.css) - Styling for the application
 *Mobile-first responsive design with clean visual components*
@@ -204,6 +220,10 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 - **Modern Typography** - Clean and readable text hierarchy
 - **Loading Indicators** - Visual feedback during data processing
 - **Error Displays** - Informative error messages with troubleshooting help
+- **Dark/Light Theme** - Toggleable theme with preference stored in local storage
+- **Grid Layout** - Modern grid-based layout with improved spacing
+- **Smooth Transitions** - Visual transitions for theme changes and content loading
+- **Ad Container Styling** - Responsive ad placement areas
 
 #### [`scripts/js/app.js`](scripts/js/app.js) - Client-side functionality
 *Handles user interactions and data rendering*
@@ -213,65 +233,74 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 **Key Functions**
 - **`handleAnalyzeSubmit(e)`** - Processes form submission and fetches product data
 - **`renderProductData(data)`** - Populates the UI with product information
-- **`showFallbackError(error)`** - Displays user-friendly error messages
+- **`showFallbackError(error)`** - Displays user-friendly error messages for different error types
 - **`useFallbackData()`** - Provides mock data when real data can't be fetched
 - **`showLoading()`/`hideLoading()`** - Manages loading state visibility
 - **`resetUI()`** - Returns to initial state for analyzing another product
+- **`toggleTheme()`** - Switches between light and dark themes
+- **`saveThemePreference(theme)`** - Saves theme preference to local storage
+- **`loadThemePreference()`** - Loads and applies saved theme preferences
+- **`runDeepSeekAnalysis()`** - Automatically triggers DeepSeek analysis after product data loads
+- **`formatStarRating(rating)`** - Formats ratings with star emojis
+- **`formatProductTitle(title)`** - Cleans product titles using regex
+- **`formatPrice(price)`** - Properly formats price display
+
+#### [`scripts/server.js`](scripts/server.js) - Server with Python integration
+*Provides backend API and handles Python script execution*
+
+**Key Features**
+- **Static File Serving** - Serves HTML, CSS, JS, and other static assets
+- **API Endpoint** - Provides `/run-analysis` endpoint for running Python scripts
+- **Error Handling** - Detects and reports various error conditions:
+  - **Amazon Blocking** - Identifies when Amazon is blocking scraping requests
+  - **Invalid JSON** - Detects when invalid or empty data is returned
+  - **Script Errors** - Properly captures and reports Python execution errors
+- **CORS Support** - Handles cross-origin resource sharing for client-side requests
+- **DeepSeek API Integration** - Provides endpoint for DeepSeek analysis
 
 ## 🌐 Local Development
 
 To run the application locally and avoid CORS issues, use one of these approaches:
 
-### Using a Local Server
+### Using the Enhanced Server (Recommended)
 
-The simplest way to run the application is with a local web server:
+The simplest way to run the application is with the included Node.js server:
 
-#### Python HTTP Server
+#### Windows
 ```bash
-# Navigate to project directory
-cd amazon-product-analyzer
-
-# Start a simple HTTP server
-python -m http.server 8000
+# Double-click start-server.bat
+# Or run from command line:
+.\start-server.bat
 ```
+
+#### Mac/Linux
+```bash
+# Make the script executable first
+chmod +x start-server.sh
+
+# Then run it
+./start-server.sh
+```
+
 Then open http://localhost:8000/pages/index.html in your browser.
 
-#### Node.js HTTP Server
-If you have Node.js installed:
-```bash
-# Install http-server globally if not already installed
-npm install -g http-server
+### Handling Amazon Scraping Errors
 
-# Start server in project directory
-http-server -p 8000
-```
+If you encounter error messages about Amazon blocking your requests:
 
-### Handling CORS Errors
+1. **Rate Limiting**:
+   - Amazon may block requests if they suspect scraping activity
+   - The application will display an appropriate error message
+   - Try again after some time has passed
 
-If you encounter CORS errors when developing locally:
+2. **Sample Data**:
+   - When real data can't be fetched, use the "Use Sample Data" button
+   - This will display mock data to demonstrate the UI functionality
 
-1. **Use the Fallback Data**:
-   - The application includes a fallback option that uses sample data when CORS errors occur
-   - Click "Use Sample Data" on the error screen to see how the UI works with mock data
-
-2. **Modify Fetch Paths**:
-   - Ensure the path to review.json is relative to the HTML file location
-   - Update the path in app.js to correctly target the JSON file
-
-3. **Browser Extensions**:
-   - For testing only, you can use browser extensions that disable CORS restrictions
-   - Note: This approach is not recommended for production use
-
-### Testing the Interface
-
-To test the UI without a backend:
-
-```bash
-# Check if all required files are in place
-node scripts/test-ui.js
-```
-
-This will verify the file structure and JSON format.
+3. **Infrastructure Options**:
+   - For production use, consider using proxies or rotating IP addresses
+   - Implement request delays to avoid triggering Amazon's anti-scraping measures
+   - Use a headless browser approach for more reliable extraction
 
 ---
 
@@ -303,4 +332,117 @@ This will verify the file structure and JSON format.
 
 #### [`testers/test_ai_summarizer.py`](testers/test_ai_summarizer.py)
 - **`test_ai_summarizer()`** - Tests AI summary generation
-- **`test_full_pipeline(product_url)`** - Tests the complete workflow 
+- **`test_full_pipeline(product_url)`** - Tests the complete workflow
+
+## Amazon Product Analyzer Documentation
+
+Amazon Product Analyzer is a web application that helps Amazon sellers analyze product listings and reviews. The application provides detailed insights into product performance, customer sentiment, and competitive positioning to optimize product listings.
+
+## Project File Structure
+
+### pages/
+**index.html** - Landing page with feature cards to navigate to Product Analyzer and Product Comparison features
+**analyzer.html** - Single product analysis page that extracts product details, reviews, and generates AI insights
+**comparison.html** - Competitive analysis page that compares two products side-by-side
+
+### scripts/
+**scripts/js/app.js** - Core JavaScript for the Product Analyzer page, handles UI interactions and API calls
+**scripts/js/comparison.js** - JavaScript for the Product Comparison page, handles comparison UI and API calls
+**scripts/server.js** - Node.js server that handles API requests and runs the Python scripts
+**scripts/python/deepseek_api.py** - Python script that interacts with the DeepSeek API for review analysis
+**scripts/python/comparison_analyzer.py** - Python script for comparing two products using DeepSeek API
+
+### styles/
+**styles/main.css** - Stylesheet containing all the CSS for the application
+
+## Key Features
+
+### Product Analyzer
+- Extract and display Amazon product details from URL
+- Analyze customer reviews using DeepSeek language model
+- Generate AI-powered insights with structured JSON schema
+- Display strengths, weaknesses, buyer personas, and notable quotes
+
+### Product Comparison
+- Compare two Amazon products side-by-side
+- Generate a detailed comparison using DeepSeek language model
+- Color-coded sections for different comparison aspects:
+  - Product cards (dark red) display basic product information
+  - Product advantages (green) highlight where one product outperforms the other
+  - Critical weaknesses (purple) identify significant issues in either product
+  - Shared strengths (yellow) show common positive aspects
+  - Unique selling points (brown) display distinct advantages for each product
+  - Buyer recommendation (pink) provides guidance on which buyers would prefer each product
+  - Specification comparison (grey) presents a head-to-head comparison of specs
+- Google Ads integration (orange sections) for monetization
+
+## Feature Details
+
+### DeepSeek API Integration
+
+The product analyzer uses DeepSeek's API to provide AI-powered analysis with the following structure:
+```json
+{
+  "top_strengths": [
+    { "feature": "string", "description": "string" }
+  ],
+  "buyer_personas": [
+    { "persona": "string", "description": "string" }
+  ],
+  "negative_trends": [
+    { "issue": "string", "frequency": "string" }
+  ],
+  "undocumented_features": [
+    { "feature": "string", "description": "string" }
+  ],
+  "standout_quotes": [
+    "string", "string", "string"
+  ]
+}
+```
+
+### Comparison Analysis
+
+The product comparison feature uses a specialized DeepSeek prompt to compare two products with the following schema:
+```json
+{
+  "product_advantages": [
+    {
+      "feature": "string (e.g., 'Battery Life')",
+      "better_product": "A or B",
+      "summary": "string (why this product wins here)",
+      "quote": "string (optional review quote that supports it)"
+    }
+  ],
+  "critical_weaknesses": [
+    {
+      "feature": "string (e.g., 'Build Quality')",
+      "worse_product": "A or B",
+      "issue": "string (what customers complained about)",
+      "severity": "low | medium | high"
+    }
+  ],
+  "shared_strengths": [
+    "string", "string", "string"
+  ],
+  "unique_selling_points": {
+    "product_A": [
+      "string (selling point unique to A)"
+    ],
+    "product_B": [
+      "string (selling point unique to B)"
+    ]
+  },
+  "buyer_recommendation": "string (short recommendation on which buyer would prefer A vs B, with reasoning)"
+}
+```
+
+## UI Features
+
+### Theme Support
+- Light and dark theme support
+- Theme preference saved in localStorage
+
+### Responsive Design
+- Works on mobile and desktop devices
+- Adjusts layout based on screen size

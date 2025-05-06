@@ -1,0 +1,50 @@
+{
+  "product_advantages": [
+    {
+      "feature": "Price",
+      "better_product": "A",
+      "summary": "Product A is significantly cheaper while offering similar performance, making it a better value for budget-conscious buyers.",
+      "quote": "Great chip for a steal of a price."
+    },
+    {
+      "feature": "Power Efficiency",
+      "better_product": "A",
+      "summary": "Product A has a lower power draw, which is appreciated by users looking for energy efficiency.",
+      "quote": "Lower power draw at 60W."
+    },
+    {
+      "feature": "Overclocking Utility",
+      "better_product": "B",
+      "summary": "Product B includes a powerful overclocking utility, which is a significant advantage for users looking to maximize performance.",
+      "quote": "The Simple and Powerful Overclocking Utility for AMD Ryzen processors."
+    }
+  ],
+  "critical_weaknesses": [
+    {
+      "feature": "Stock Cooler",
+      "worse_product": "A",
+      "issue": "Product A does not come with a stock cooler, requiring an additional purchase.",
+      "severity": "medium"
+    },
+    {
+      "feature": "Defective Units",
+      "worse_product": "B",
+      "issue": "Some users reported receiving defective units, leading to crashes and hardware errors.",
+      "severity": "high"
+    }
+  ],
+  "shared_strengths": [
+    "High performance for gaming and productivity",
+    "Compatibility with AM4 platform",
+    "Excellent upgrade path for older systems"
+  ],
+  "unique_selling_points": {
+    "product_A": [
+      "Lower power consumption and better thermal performance"
+    ],
+    "product_B": [
+      "Included overclocking utility for performance tuning"
+    ]
+  },
+  "buyer_recommendation": "Product A is ideal for budget-conscious buyers and those looking for energy efficiency without sacrificing performance. Product B is better suited for enthusiasts who want to overclock and push their system to the limits, despite the higher price and potential for defective units."
+}

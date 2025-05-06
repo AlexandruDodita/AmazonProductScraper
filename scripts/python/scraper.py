@@ -263,9 +263,21 @@ class AmazonScraper:
                         if header_cell and value_cell:
                             key = header_cell.get_text(strip=True).rstrip(':')
                             value = value_cell.get_text(strip=True)
+                            
                             # Clean the text
                             key = re.sub(r'\s+', ' ', key)
                             value = re.sub(r'\s+', ' ', value)
+                            
+                            # Skip if the key and value are identical (likely an extraction error)
+                            if key == value:
+                                self.logger.warning(f"Skipping duplicate key/value: '{key}'")
+                                continue
+                                
+                            # Also skip if value appears to be a header itself
+                            if value.endswith(':') or value.strip() == "":
+                                self.logger.warning(f"Skipping likely invalid value for '{key}'")
+                                continue
+                                
                             specs[key] = value
                     
                     if specs:
@@ -301,6 +313,17 @@ class AmazonScraper:
                             key, value = match.groups()
                             key = key.strip()
                             value = value.strip()
+                            
+                            # Skip if the key and value are identical or if value is empty
+                            if key == value or not value:
+                                self.logger.warning(f"Skipping duplicate key/value: '{key}'")
+                                continue
+                                
+                            # Skip if value appears to be a header itself 
+                            if value.endswith(':') or value.strip() == "":
+                                self.logger.warning(f"Skipping likely invalid value for '{key}'")
+                                continue
+                                
                             if key and value:
                                 specs[key] = value
                     

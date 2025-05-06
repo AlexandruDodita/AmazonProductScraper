@@ -1,0 +1,84 @@
+You are an intelligent assistant comparing two similar Amazon products based on customer feedback and product data. Your goal is to extract clear, actionable differences that help a seller:
+
+    Position their product better
+    Understand competitive weaknesses
+    Identify features to emphasize, improve, or de-emphasize
+
+PRODUCT A: Be unstoppable with the speed of the AMD Ryzen 7 5700X desktop processor. AMD Ryzen 5000 Series processors deliver the ultimate in high performance, whether you’re playing the latest games, designing the next skyscraper or crunching scientific data. With AMD Ryzen, you’re always in the lead.
+Price: $139.26
+Average Rating: 4.92
+Specifications: {"Processor":"‎4.6 GHz ryzen_7"}
+
+PRODUCT A REVIEWS:
+Review by David Juan (5 stars):
+The AMD Ryzen 7 5700X is a fantastic choice for anyone looking for a high-end CPU that excels in both gaming and productivity. This processor is capable of supporting any current-generation GPU, making it perfect for a powerful gaming rig or work setup. I absolutely love this CPU—it runs flawlessly  ...
+
+Review by Bex (5 stars):
+Upgraded to this back in Nov 2023 from a Ryzen 5 2500x since I’m still on am4. Great performance and very pleased in the increased performance at the price. Works great for gaming. Downside is that it doesn’t come with a stock cooler, so you’ll have to grab one separately but not really the worst do ...
+
+Review by Justin (5 stars):
+Great chip for a steal of a price. I gave my GF my 7 2700X and upgraded to this 5700X. The speed is great, and handles any game i throw at it. Its too bad my GPU holds it back. It stays slightly cooler than the 2700X but just so.Read more 
+
+Review by David W (5 stars):
+Works great! First time upgrading my CPU myself. That being so, I naively forgot to check my BIOS version to see if it was supported. I have a ASRock B450 K4 Gaming motherboard, so if you do too, or have a motherboard just as old or older, check if the BIOS supports it, or at least if it needs to be ...
+
+Review by michael (5 stars):
+Lower power draw at 60W. Very fast. AM4 chip so easy installation. Excellent performance for the price point for productivity and gaming. Bought a second one to use in my lab computer for productivity purposes. Upgraded to the 5700X from a Ryzen 5 4500 and the difference is night and day. Highly rec ...
+
+PRODUCT B: Be unstoppable with the unprecedented speed of the world’s best desktop processors. AMD Ryzen 5000 Series processors deliver the ultimate in high performance, whether you’re playing the latest games, designing the next skyscraper or crunching scientific data. With AMD Ryzen, you’re always in the lead. The Simple and Powerful Overclocking Utility for AMD Ryzen processors.
+Price: $158.17
+Average Rating: 5
+Specifications: {"Processor":"‎4.7 GHz amd_ryzen_7"}
+
+PRODUCT B REVIEWS:
+Review by Darkoasis (5 stars):
+I have had this CPU for around exactly one year now. Normally I do all my tech reviews fairly early but I wanted to really use this chip, overclock it, game, and do lighting editing as well. To start off my full system is a Ryzen 5800X, Asus X570-Pro board, 32GB of 3600mhz G.Skill CL16 memory (4x8GB ...
+
+Review by Noah Clark (5 stars):
+so, i was one of the (statistically few) who hit the silicon lottery and struck dirt. basically, my 5800x was defective. this is just a PSA, if you encounter BSODs/crashes to reboot/fatal hardware errors after installing your new CPU, it is likely defective. i was getting WHEA_UNCORRECTABLE_ERROR at ...
+
+Review by Francesco (5 stars):
+⭐️⭐️⭐️⭐️⭐️ (5 su 5)Dopo anni con un Ryzen 5 2600X, sono passato a questo 5800X e il salto di prestazioni si nota eccome. È un processore di fascia alta per la piattaforma AM4, ideale sia per il gaming che per il lavoro pesante, e dopo più di un mese di utilizzo sono pienamente soddisfatto.✅ Pro:Pres ...
+
+Review by Brandon D. (5 stars):
+Scored it for a great price which made upgrading from my 3600 a great value. 8 cores, super high boost speeds, it performs great. AMDs support of the AM4 platform for so long has really allowed people to stretch out the lifespan of their older systems providing a nice upgrade path even still.I  read ...
+
+Review by Irving (5 stars):
+El producto es muy bueno. Es un procesador que por sus características permite sacar el máximo provecho a juegos (razón por la que yo lo compré). Actualmente tengo mi computadora junto con una rtx 3060 y me parece que el rendimiento es óptimo y de mucha calidad.Mi computadora tiene una refrigeración ...
+
+Output a structured JSON with the following schema
+{
+  "product_advantages": [
+    {
+      "feature": "string (e.g., 'Battery Life')",
+      "better_product": "A or B",
+      "summary": "string (why this product wins here)",
+      "quote": "string (optional review quote that supports it)"
+    }
+  ],
+  "critical_weaknesses": [
+    {
+      "feature": "string (e.g., 'Build Quality')",
+      "worse_product": "A or B",
+      "issue": "string (what customers complained about)",
+      "severity": "low | medium | high"
+    }
+  ],
+  "shared_strengths": [
+    "string", "string", "string"
+  ],
+  "unique_selling_points": {
+    "product_A": [
+      "string (selling point unique to A)"
+    ],
+    "product_B": [
+      "string (selling point unique to B)"
+    ]
+  },
+  "buyer_recommendation": "string (short recommendation on which buyer would prefer A vs B, with reasoning)"
+}
+
+Focus on what matters to buyers, not spec-sheet trivia.
+Use review-backed insights, not assumptions.
+Be blunt but fair. If one product clearly wins on something, say it.
+If a product is better for a certain audience or use case, highlight that in the buyer_recommendation

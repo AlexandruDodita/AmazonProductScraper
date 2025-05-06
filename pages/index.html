@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amazon Product Analyzer</title>
   <link rel="stylesheet" href="../styles/main.css">
   <meta name="description" content="Analyze Amazon product reviews and get AI-generated summaries to make informed purchasing decisions.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
   <div class="container">
@@ -13,116 +14,35 @@
     <header class="app-header">
       <h1>Amazon Product Analyzer</h1>
       <p>Get AI-powered insights from product reviews to make informed purchasing decisions</p>
+      <!-- Theme Switch -->
+      <div class="theme-switch-wrapper">
+        <span class="slider-icon"><i class="fas fa-sun"></i></span>
+        <label class="theme-switch">
+          <input type="checkbox" id="theme-toggle">
+          <span class="slider"></span>
+        </label>
+        <span class="slider-icon"><i class="fas fa-moon"></i></span>
+      </div>
     </header>
 
-    <!-- Form Section -->
-    <section class="form-container">
-      <div class="card">
-        <form id="analyze-form">
-          <div class="form-group">
-            <label for="product-url">Amazon Product URL</label>
-            <input type="url" id="product-url" class="form-control" 
-                   placeholder="https://www.amazon.com/dp/B08XX..." 
-                   required>
-          </div>
-          <div id="error-message" class="error-message hidden"></div>
-          <button type="submit" class="button full-width">Analyze Product</button>
-        </form>
+    <!-- Landing Page Content -->
+    <section class="features-container">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-search-dollar"></i>
+        </div>
+        <h2>Product Analyzer</h2>
+        <p>Get detailed insights about any Amazon product with AI-powered review analysis. Understand what customers love and what could be improved.</p>
+        <a href="analyzer.html" class="button">Analyze a Product</a>
       </div>
-      <!-- Loading Spinner -->
-      <div id="loading-spinner" class="spinner hidden"></div>
-    </section>
 
-    <!-- Fallback Container (shown when fetch fails) -->
-    <section id="fallback-container" class="card error-container hidden">
-      <h2>Data Loading Error</h2>
-      <div class="error-box">
-        <p>We encountered an error while trying to load the product data:</p>
-        <pre id="error-details" class="error-details"></pre>
-        
-        <div id="cors-message" class="cors-message hidden">
-          <h3>CORS Error Detected</h3>
-          <p>This appears to be a CORS (Cross-Origin Resource Sharing) error, which commonly occurs when:</p>
-          <ul>
-            <li>Running the application directly from your filesystem</li>
-            <li>Trying to access local files using JavaScript's fetch API</li>
-          </ul>
-          <p>To fix this issue, you can:</p>
-          <ol>
-            <li>Run the application through a local server instead of opening the HTML file directly</li>
-            <li>Use the sample data option below to see how the interface works</li>
-          </ol>
+      <div class="feature-card highlight">
+        <div class="feature-icon">
+          <i class="fas fa-balance-scale"></i>
         </div>
-      </div>
-      <div class="button-group">
-        <button id="try-fallback" class="button">Use Sample Data</button>
-        <button onclick="window.location.reload()" class="button button-secondary">Try Again</button>
-      </div>
-    </section>
-
-    <!-- Results Container (hidden by default) -->
-    <section id="results-container" class="hidden">
-      <!-- Product Card -->
-      <section class="card">
-        <div class="product-card">
-          <img id="product-image" class="product-image" src="" alt="Product Image">
-          <div class="product-details">
-            <h2 id="product-title"></h2>
-            <div id="product-price" class="product-price"></div>
-            <p id="product-description" class="product-description"></p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Specifications -->
-      <section class="card">
-        <h2>Specifications</h2>
-        <table class="specs-table" id="specs-table">
-          <!-- Table rows will be inserted dynamically -->
-        </table>
-      </section>
-
-      <!-- Review Highlights -->
-      <section class="card review-highlights">
-        <h2>Review Highlights</h2>
-        <p id="summary-text" class="summary-text"></p>
-        
-        <div class="pros-cons">
-          <div class="pros">
-            <h3>Pros</h3>
-            <ul id="pros-list">
-              <!-- List items will be inserted dynamically -->
-            </ul>
-          </div>
-          
-          <div class="cons">
-            <h3>Cons</h3>
-            <ul id="cons-list">
-              <!-- List items will be inserted dynamically -->
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Top Reviews -->
-      <section class="card reviews-section">
-        <h2>Top Reviews</h2>
-        <div id="reviews-list">
-          <!-- Review articles will be inserted dynamically -->
-        </div>
-      </section>
-
-      <!-- Similar Products -->
-      <section id="similar-products-container" class="card similar-products">
-        <h2>Similar Products</h2>
-        <div id="similar-products-list" class="similar-products-list">
-          <!-- Similar product items will be inserted dynamically -->
-        </div>
-      </section>
-
-      <!-- Compare Another Button -->
-      <div class="text-center">
-        <button id="compare-another" class="button">Compare Another Product</button>
+        <h2>Product Comparison</h2>
+        <p>See how your competitors are doing! Compare two Amazon products side by side to understand their relative strengths and weaknesses.</p>
+        <a href="comparison.html" class="button">Compare Products</a>
       </div>
     </section>
 
@@ -132,6 +52,36 @@
     </footer>
   </div>
 
-  <script src="../scripts/js/app.js"></script>
+  <script>
+    // Theme toggle functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      
+      // Theme handling
+      const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+      
+      if (prefersDarkScheme.matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeToggle.checked = true;
+      }
+      
+      themeToggle.addEventListener('change', function() {
+          if (this.checked) {
+              document.documentElement.setAttribute('data-theme', 'dark');
+              localStorage.setItem('theme', 'dark');
+          } else {
+              document.documentElement.setAttribute('data-theme', 'light');
+              localStorage.setItem('theme', 'light');
+          }
+      });
+  
+      // Check for saved theme preference
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+          themeToggle.checked = savedTheme === 'dark';
+      }
+    });
+  </script>
 </body>
 </html> 
