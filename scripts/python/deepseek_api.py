@@ -8,12 +8,17 @@ import json
 import sys
 from pathlib import Path
 from openai import OpenAI
+from dotenv import load_dotenv
 
 # ============================================================
 # API KEY CONFIGURATION
-# Replace this value with your actual DeepSeek API key
-# ============================================================
-DEEPSEEK_API_KEY = "sk-3998b65a29c24c3f93b5602bd2e01af8"
+# Load environment variables from .env file
+load_dotenv()
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
+if DEEPSEEK_API_KEY:
+    print(f"DEBUG: Loaded API key ending with: ...{DEEPSEEK_API_KEY[-4:]}")
+else:
+    print("DEBUG: DEEPSEEK_API_KEY not found in environment variables.")
 # ============================================================
 
 def load_review_data(filepath):
@@ -226,9 +231,10 @@ def main():
     response_json_path = root_dir / "response.json"
     
     # Check if API key is configured
-    if DEEPSEEK_API_KEY == "your_api_key_here":
-        print("WARNING: You need to replace 'your_api_key_here' with your actual DeepSeek API key in the script.")
-        print("The API call will likely fail with the default value.")
+    if not DEEPSEEK_API_KEY or DEEPSEEK_API_KEY == "your_api_key_here":
+        print("WARNING: DEEPSEEK_API_KEY is not set or is still the default placeholder in your .env file.")
+        print("Please create a .env file in the root directory and add your DeepSeek API key as DEEPSEEK_API_KEY=your_key_here.")
+        print("The API call will likely fail without a valid API key.")
     
     # Load review data
     review_data = load_review_data(review_json_path)

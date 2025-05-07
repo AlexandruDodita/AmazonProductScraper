@@ -9,6 +9,7 @@ import json
 import time
 import requests
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Get the directory of this script
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +21,14 @@ comparison_prompt_path = os.path.join(script_dir, '../comparison_prompt.txt')
 comparison_result_path = os.path.join(script_dir, '../comparison_result.json')
 
 # DeepSeek API configuration
-API_KEY = os.environ.get('DEEPSEEK_API_KEY', 'sk-3998b65a29c24c3f93b5602bd2e01af8')
+load_dotenv(os.path.join(root_dir, '.env'))
+API_KEY = os.environ.get('DEEPSEEK_API_KEY')
+
+if API_KEY:
+    print(f"DEBUG (comparison_analyzer.py): Loaded API key ending with: ...{API_KEY[-4:]}")
+else:
+    print("DEBUG (comparison_analyzer.py): DEEPSEEK_API_KEY not found in environment variables.")
+
 API_ENDPOINT = 'https://api.deepseek.com/v1/chat/completions'
 
 def read_comparison_data():
@@ -208,6 +216,14 @@ def main():
     """Main function to run the comparison analysis"""
     print("Starting comparison analysis...")
     
+    # Check if API key is configured
+    if not API_KEY:
+        print("ERROR: DEEPSEEK_API_KEY is not set. Please ensure it's in your .env file.")
+        print("The API call will fail without a valid API key.")
+        # Optionally, exit if no API key, or rely on the call_deepseek_api to fail
+        # For now, we'll let it proceed to show the API call failure if it occurs
+        # return 1 # Uncomment to exit early if API key is missing
+
     # Read the comparison data
     comparison_data = read_comparison_data()
     if comparison_data:

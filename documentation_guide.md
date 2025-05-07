@@ -178,26 +178,28 @@ python main.py "https://www.amazon.com/dp/B00SX2YSMS" -k "your-api-key" -o resul
 - **`summarize_reviews(reviews, api_key)`** - Quick summary generation
 
 #### [`scripts/python/deepseek_api.py`](scripts/python/deepseek_api.py) - DeepSeek AI integration
-*Handles DeepSeek AI API integration for advanced product analysis*
+*Handles DeepSeek AI API integration for advanced product analysis. Requires a DEEPSEEK_API_KEY to be set in a .env file in the project root.*
 
-**`DeepSeekAnalyzer`** - Processes review data through DeepSeek AI
-- **`__init__(api_key)`** - Initializes with the API key (directly in the script)
-- **`load_review_data(filepath)`** - Loads product data from review.json
-- **`generate_prompt(data)`** - Creates a structured prompt for the AI
-- **`get_deepseek_analysis(prompt)`** - Calls the DeepSeek API with the prompt
-- **`clean_markdown_formatting(response)`** - Cleans markdown formatting from API responses
-- **`save_response(response, output_path)`** - Saves the AI analysis to response.json
+**Key Functions**
+- **`load_review_data(filepath)`** - Loads review data from a JSON file.
+- **`generate_mock_data()`** - Generates mock product data if `review.json` is unavailable.
+- **`generate_prompt(data)`** - Creates a structured prompt for the DeepSeek API based on product and review data.
+- **`get_deepseek_analysis(prompt)`** - Queries the DeepSeek API with the generated prompt and returns the analysis.
+- **`generate_mock_analysis()`** - Generates a mock analysis if the API call fails.
+- **`save_response(response, output_path)`** - Saves the API response to a JSON file, cleaning up markdown if necessary.
+- **`main()`** - Orchestrates the loading of data, prompt generation, API call, and saving the response.
 
 #### [`scripts/python/comparison_analyzer.py`](scripts/python/comparison_analyzer.py) - Product comparison analysis
-*Analyzes and compares two Amazon products using DeepSeek AI*
+*Analyzes and compares two Amazon products using DeepSeek AI. Requires a DEEPSEEK_API_KEY to be set in a .env file in the project root.*
 
-**`ComparisonAnalyzer`** - Processes and compares two products
-- **`__init__(api_key)`** - Initializes with the DeepSeek API key
-- **`load_product_data(product_a_path, product_b_path)`** - Loads data for two products
-- **`generate_comparison_prompt(product_a, product_b)`** - Creates structured comparison prompt
-- **`get_comparison_analysis(prompt)`** - Makes API call to DeepSeek for comparison
-- **`parse_json_response(response)`** - Parses and validates the JSON response
-- **`save_comparison_result(comparison_data, output_path)`** - Saves comparison to JSON file
+**Key Functions**
+- **`read_comparison_data()`** - Reads `comparison_data.json`.
+- **`read_comparison_prompt()`** - Reads `comparison_prompt.txt`.
+- **`generate_comparison_prompt(product_a, product_b)`** - Creates a structured comparison prompt for DeepSeek.
+- **`format_reviews(reviews)`** - Helper to format reviews for the prompt.
+- **`call_deepseek_api(prompt)`** - Calls the DeepSeek API with the prompt.
+- **`extract_json_from_response(response)`** - Extracts and parses JSON from the API response.
+- **`main()`** - Main function to orchestrate the comparison analysis.
 
 ### 🔸 Frontend Components
 
